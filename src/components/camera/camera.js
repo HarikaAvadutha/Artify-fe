@@ -51,7 +51,7 @@ const WebcamCapture = ({ handleBack, handleNext, collectionID }) => {
         )}
         {imgSrc && (
           <>
-            <img src={imgSrc} />
+            <img src={imgSrc} alt='temp' />
             <div className="row" style={{ margin: '10px 20px' }}>
               <Button className="next-button" style={buttonStyle} onClick={handleBack}>
                 Back

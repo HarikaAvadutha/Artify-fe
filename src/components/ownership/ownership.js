@@ -4,14 +4,14 @@ import { generateUUID } from '../../utility/utility';
 import { Button } from '../buttons/buttons';
 
 const collectionID = `coll-${generateUUID()}`;
-const SERVER_ENDPOINT = 'http://localhost:5000/api/art/';
+// const SERVER_ENDPOINT = 'http://localhost:5000/api/art/';
 
-let currentScreenCnt = 1;
 const Ownership = ({ loadNextSection, formData }) => {
   const [currentStage, setCurrentStage] = useState('purchase');
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedType, setSelectedType] = useState(null);
   const imageInputRef = React.useRef();
+  let currentScreenCnt = 1;
 
   const stages = {
     purchase: {
@@ -85,7 +85,8 @@ const Ownership = ({ loadNextSection, formData }) => {
     maxWidth: '300px',
     margin: 'auto',
     fontSize: '15px',
-    marginBottom: '100px'
+    backgroundColor: '#0B1A23',
+    color: '#FFFFFF'
   }
 
   const inputType = {
@@ -102,7 +103,6 @@ const Ownership = ({ loadNextSection, formData }) => {
   const fieldContainer = {
     textAlign: 'left',
     minHeight: '200px',
-    margin: '10px',
   }
 
   const header = {
@@ -149,10 +149,10 @@ const Ownership = ({ loadNextSection, formData }) => {
     margin: '5px'
   }
 
-  const imageDiv = {
-    maxWidth: '200px',
-    border: '1px solid white',
-  }
+  // const imageDiv = {
+  //   maxWidth: '200px',
+  //   border: '1px solid white',
+  // }
 
   const inputField = {
     width: '100%',
@@ -207,7 +207,7 @@ const Ownership = ({ loadNextSection, formData }) => {
           {/* <div style={{ textAlign: 'center' }}><img style={imageDiv} src={formData.takePictures} alt="mainImage" /></div> */}
           <div style={fieldContainer}>
             <div>
-              <div style={header}>{stages[currentStage].title}: Optional</div>
+              <div style={header}>{stages[currentStage].title}</div>
               <div>{stages[currentStage].caption}</div>
               <div>
                 <Button style={inputField} onClick={() => handleSelectedType('upload')}>Browse for File(s)...</Button>
@@ -255,7 +255,7 @@ const Ownership = ({ loadNextSection, formData }) => {
       )}
       {currentStage === 'paintingLocation' && Object.keys(stages[currentStage]).length && (
         <div style={fieldContainer}>
-          <div style={header}>{stages[currentStage].title}: Optional</div>
+          <div style={header}>{stages[currentStage].title}</div>
           <p>Optional</p>
           <div style={{ margin: '10px 0' }}>
             <label style={{ fontSize: '22px', fontWeight: 700 }}>City:</label><br />

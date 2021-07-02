@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import axios, { post } from 'axios';
+import { post } from 'axios';
 import WebcamCapture from '../camera/camera';
-import { generateUUID } from '../../utility/utility';
 import { Button } from '../buttons/buttons';
 
 // const collectionID = `coll-${generateUUID()}`;
@@ -189,6 +188,8 @@ const CapturePics = ({ loadNextSection, formData }) => {
     maxWidth: '300px',
     margin: 'auto',
     fontSize: '15px',
+    backgroundColor: '#0B1A23',
+    color: '#FFFFFF'
   }
 
   const title = {
@@ -205,6 +206,7 @@ const CapturePics = ({ loadNextSection, formData }) => {
   const groupList = {
     listStyleType: 'disc',
     margin: '15px',
+    color: '#FFFFFF'
   }
 
   const ptTen = {

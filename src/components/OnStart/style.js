@@ -149,6 +149,10 @@ const OnStart = Styled.div`
     .slider.round:before {
      	border-radius: 50%;
     }
+
+    .color-white {
+        color: #9598A5;
+    }
 `;
 
 

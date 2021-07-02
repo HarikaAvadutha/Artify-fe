@@ -3,7 +3,7 @@
  * @param {string} text
  * @param {number} size
  */
-const ellipsis = (text, size) => {
+ const ellipsis = (text, size) => {
   return `${text
     .split(' ')
     .slice(0, size)

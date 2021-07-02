@@ -75,6 +75,12 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
         </NavLink>
       </Menu.Item>
 
+      <Menu.Item key="dashboard" icon={!topMenu && <FeatherIcon icon="bar-chart-2" />} >
+        <NavLink onClick={toggleCollapsed} to={`${path}/users/upload`}>
+          User Dashboard
+        </NavLink>
+      </Menu.Item>
+
     </Menu>
   );
 };
