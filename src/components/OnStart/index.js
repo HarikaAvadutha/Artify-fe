@@ -232,7 +232,7 @@ export default function OnStart({ loadNextSection }) {
   }
 
   const dimensionUnitChange = (field) => {
-    return field.config.map(item => {
+    field.config.map(item => {
       item.type = item.type === 'inches'? 'cm': 'inches'
     });
   }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { Row, Col } from 'antd';
-import { useRouteMatch } from 'react-router-dom';
+// import { useRouteMatch } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
 import { post } from 'axios';
 import { UsercardWrapper } from './style';
@@ -25,22 +25,22 @@ const completedStages = {
 };
 
 const Users = () => {
-  const { searchData } = useSelector(state => {
-    return {
-      searchData: state.headerSearchData,
-      users: state.users,
-      userGroup: state.userGroup,
-    };
-  });
+  // const { searchData } = useSelector(state => {
+  //   return {
+  //     searchData: state.headerSearchData,
+  //     users: state.users,
+  //     userGroup: state.userGroup,
+  //   };
+  // });
 
   // const { path } = useRouteMatch();
 
-  const [state, setState] = useState({
-    notData: searchData,
-    current: 0,
-    pageSize: 0,
-    page: 0,
-  });
+  // const [state, setState] = useState({
+  //   notData: searchData,
+  //   current: 0,
+  //   pageSize: 0,
+  //   page: 0,
+  // });
   const [showForm, setShowForm] = useState('');
   const [finalResponse, setFinalResponse] = useState(null);
 
