@@ -10,6 +10,7 @@ import { Button } from '../../components/buttons/buttons';
 import OnStart from '../../components/OnStart';
 import CapturePics from '../../components/capturePics/capturePics';
 import Ownership from '../../components/ownership/ownership';
+import Review from '../../components/reviewForm';
 
 const SERVER_ENDPOINT = 'http://localhost:5000/api/analytics/';
 const formData = {
@@ -112,6 +113,10 @@ const Users = () => {
       })
       .catch(err => setFinalResponse(err));
   };
+
+  const reviewApplication = () => {
+    setShowForm('review');
+  }
 
   const start_btn = { 
     height: '30%', 
@@ -238,18 +243,19 @@ const Users = () => {
                   className="rvw_btn"
                   type="button"
                   disabled={shouldButtonDisable()}
-                  style={{ height: '50px', width: '130px', alignSelf: 'center', margin: '10px' }}
+                  onClick={() => reviewApplication()}
+                  style={{ height: '50px', width: '130px', alignSelf: 'center', margin: '10px', borderRadius: '50px', backgroundColor: '#BAA06A', fontSize: '20px', fontWeight: 'bolder', color:'#0B1A23' }}
                 >
-                  REVIEW
+                  Review
                 </Button>
                 <Button
                   className="sbmt_btn"
                   type="button"
                   disabled={shouldButtonDisable()}
                   onClick={$e => submitApplication($e)}
-                  style={{ height: '50px', width: '130px', margin: '10px' }}
+                  style={{ height: '50px', width: '130px', margin: '10px', borderRadius: '50px', backgroundColor: '#00FF87', fontSize: '20px', fontWeight: 'bolder', color:'#0B1A23' }}
                 >
-                  SUBMIT
+                  Submit
                 </Button>
                 {finalResponse && <p>`Server Response: ${JSON.stringify(finalResponse.data)}`</p>}
               </div>
@@ -266,6 +272,9 @@ const Users = () => {
       {/* Ownership Page */}
       {showForm === 'ownership' && (
         <Ownership formData={formData} loadNextSection={response => loadNextSection(response)} />
+      )}
+      {showForm === 'review' && (
+        <Review formData={formData} loadNextSection={response => loadNextSection(response)} />
       )}
     </div>
   );

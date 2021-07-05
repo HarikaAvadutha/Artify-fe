@@ -232,10 +232,11 @@ export default function OnStart({ loadNextSection }) {
   }
 
   const dimensionUnitChange = (field) => {
-    field.config.map(item => {
-      item.type = item.type === 'inches'? 'cm': 'inches'
+    field.config.forEach(item => {
+      // eslint-disable-next-line no-param-reassign
+      item.type = item.type === 'inches' ? 'cm' : 'inches';
     });
-  }
+  };
 
   return (
     <Start style={{ background: '#0B1A23'}}>

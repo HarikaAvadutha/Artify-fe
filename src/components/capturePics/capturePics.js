@@ -7,8 +7,9 @@ import { Button } from '../buttons/buttons';
 const collectionID = Math.floor(Math.random() * 1000000000);
 
 const SERVER_ENDPOINT = 'http://localhost:5000/api/art/';
-
+// eslint-disable-next-line no-unused-vars
 let currentScreenCnt = 1;
+
 const CapturePics = ({ loadNextSection, formData }) => {
   const [currentStage, setCurrentStage] = useState('info');
   const [selectedFile, setSelectedFile] = useState(null);
@@ -117,7 +118,7 @@ const CapturePics = ({ loadNextSection, formData }) => {
 
   const fileUpload = (imgSrc, type = 'live') => {
     const finalFile = type === 'upload' ? selectedFile : converBase64toFileObj(imgSrc);
-    
+
     if (!mainImage) {
       mainImage = type === 'upload' ? selectedFile : imgSrc;
     }

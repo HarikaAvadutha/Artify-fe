@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-function field(props) {
+const Field = (props) => {
   const fieldConfig = props.fieldConfig;
   let element = null;
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  let [activeIndex, setActiveIndex] = React.useState(0);
-  let [unitChanged, setUnitChanged] = React.useState(true);
+  let [activeIndex, setActiveIndex] = useState(0);
+  let [unitChanged, setUnitChanged] = useState(true);
 
   const onSelectValueChange = (value, index) => {
     setActiveIndex(index);
@@ -93,4 +93,4 @@ function field(props) {
   )
 }
 
-export default field;
+export default Field;

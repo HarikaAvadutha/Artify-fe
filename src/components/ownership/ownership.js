@@ -8,9 +8,10 @@ const collectionID = `coll-${generateUUID()}`;
 
 const Ownership = ({ loadNextSection, formData }) => {
   const [currentStage, setCurrentStage] = useState('purchase');
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [, setSelectedFile] = useState(null);
   const [selectedType, setSelectedType] = useState(null);
   const imageInputRef = React.useRef();
+  // eslint-disable-next-line no-unused-vars
   let currentScreenCnt = 1;
 
   const stages = {
