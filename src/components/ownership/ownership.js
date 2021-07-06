@@ -57,7 +57,7 @@ const Ownership = ({ loadNextSection, formData }) => {
     if (!Object.values(nextObj).filter(Boolean).length) {
       loadNextSection({
         name: 'ownership',
-        data: formData
+        data: stages
       });
     } else {
       setCurrentStage(nextObj.key);
