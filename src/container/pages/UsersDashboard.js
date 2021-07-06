@@ -13,7 +13,7 @@ import Ownership from '../../components/ownership/ownership';
 import Review from '../../components/reviewForm';
 
 const SERVER_ENDPOINT = 'http://localhost:5000/api/analytics/';
-const formData = {
+let formData = {
   artWorkInfo: {},
   takePictures: {},
   ownership: {},
@@ -26,22 +26,6 @@ const completedStages = {
 };
 
 const Users = () => {
-  // const { searchData } = useSelector(state => {
-  //   return {
-  //     searchData: state.headerSearchData,
-  //     users: state.users,
-  //     userGroup: state.userGroup,
-  //   };
-  // });
-
-  // const { path } = useRouteMatch();
-
-  // const [state, setState] = useState({
-  //   notData: searchData,
-  //   current: 0,
-  //   pageSize: 0,
-  //   page: 0,
-  // });
   const [showForm, setShowForm] = useState('');
   const [finalResponse, setFinalResponse] = useState(null);
 
@@ -56,27 +40,10 @@ const Users = () => {
     return !(completedStages.artWorkInfo && completedStages.takePictures && completedStages.ownership);
   };
 
-  // const converBase64toFileObj = base64String => {
-  //   const arr = base64String.split(',');
-  //   const mime = arr[0].match(/:(.*?);/)[1];
-  //   const bstr = atob(arr[1]);
-  //   let n = bstr.length;
-  //   const u8arr = new Uint8Array(n);
-
-  //   while (n--) {
-  //     u8arr[n] = bstr.charCodeAt(n);
-  //   }
-
-  //   return new File([u8arr], `upload-${+new Date()}`, { type: mime });
-  // };
-
-  // const blobToFile = fileInBloB => {
-  //   console.log('file', new File([fileInBloB], 'file'));
-  //   return new File([fileInBloB], 'file');
-  // };
-
   const submitApplication = $e => {
-    $e.preventDefault();
+    if($e) {
+      $e.preventDefault();
+    }
     console.log('formData', formData.ownership.takePictures);
     const payload = new FormData();
     payload.append('remark', 'Test Remark');
@@ -118,15 +85,21 @@ const Users = () => {
     setShowForm('review');
   }
 
-  const start_btn = { 
-    height: '30%', 
-    width: '65%', 
-    padding: '5px', 
-    backgroundColor: '#00FF87', 
-    fontWeight: 'bolder', 
-    fontSize: '20px', 
-    color: '#0B1A23', 
-    borderRadius: '50px' 
+  const reviewActionTriggers = (type, data) => {
+    formData = data;
+    (type === 'close') ? setShowForm('') : submitApplication();
+  }
+
+
+  const start_btn = {
+    height: '30%',
+    width: '65%',
+    padding: '5px',
+    backgroundColor: '#00FF87',
+    fontWeight: 'bolder',
+    fontSize: '20px',
+    color: '#0B1A23',
+    borderRadius: '50px'
   };
 
   return (
@@ -244,7 +217,7 @@ const Users = () => {
                   type="button"
                   disabled={shouldButtonDisable()}
                   onClick={() => reviewApplication()}
-                  style={{ height: '50px', width: '130px', alignSelf: 'center', margin: '10px', borderRadius: '50px', backgroundColor: '#BAA06A', fontSize: '20px', fontWeight: 'bolder', color:'#0B1A23' }}
+                  style={{ height: '50px', width: '130px', alignSelf: 'center', margin: '10px', borderRadius: '50px', backgroundColor: '#BAA06A', fontSize: '20px', fontWeight: 'bolder', color: '#0B1A23' }}
                 >
                   Review
                 </Button>
@@ -253,7 +226,7 @@ const Users = () => {
                   type="button"
                   disabled={shouldButtonDisable()}
                   onClick={$e => submitApplication($e)}
-                  style={{ height: '50px', width: '130px', margin: '10px', borderRadius: '50px', backgroundColor: '#00FF87', fontSize: '20px', fontWeight: 'bolder', color:'#0B1A23' }}
+                  style={{ height: '50px', width: '130px', margin: '10px', borderRadius: '50px', backgroundColor: '#00FF87', fontSize: '20px', fontWeight: 'bolder', color: '#0B1A23' }}
                 >
                   Submit
                 </Button>
@@ -274,7 +247,7 @@ const Users = () => {
         <Ownership formData={formData} loadNextSection={response => loadNextSection(response)} />
       )}
       {showForm === 'review' && (
-        <Review formData={formData} loadNextSection={response => loadNextSection(response)} />
+        <Review formData={formData} reviewActionTriggers={(type, data) => reviewActionTriggers(type, data)} />
       )}
     </div>
   );

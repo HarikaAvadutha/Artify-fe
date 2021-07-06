@@ -37,6 +37,7 @@ const ReviewStyle = Styled.div`
     .field {
         border-top: 2px solid grey;
         padding: 5px 5px 1px 5px;
+        min-height: 50px;
         .field-label {
             font-size: 14px;
             color: #BAA06A;
@@ -48,6 +49,44 @@ const ReviewStyle = Styled.div`
             color: #FFFFFF;
             margin-bottom: 2px;
         }
+    }
+
+    .edit-icon {
+        float: right;
+        padding: 5px;
+    }
+
+    .custom-div {
+        padding: 5px;
+        min-width: 220px;
+        .header {
+            font-size: 14px;
+            font-weight: 600;
+            min-width: 50px;
+            display:inline-block;
+        }
+        .number-type {
+            width: 60px;
+            font-size: 12px;
+            background-color: #BAA06A;
+            color: black;
+            text-align: center;
+            border-raidus: 20px;
+            margin: 0 5px;
+        }
+        .arrows {
+            margin: 10px;
+            min-width: 10px;
+        }
+    }
+
+    .input-type {
+        border-radius: 20px;
+        background-color: #BAA06A;
+        padding:5px;
+        font-size:16px;
+        font-weight:600;
+        color: black;
     }
 
 `;
