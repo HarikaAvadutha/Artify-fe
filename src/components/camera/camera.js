@@ -2,7 +2,7 @@ import React from 'react';
 import Webcam from 'react-webcam';
 import { Button } from '../buttons/buttons';
 
-const WebcamCapture = ({ handleBack, handleNext, collectionID }) => {
+const WebcamCapture = ({ handleBack, handleNext, collectionID, data, skipClick }) => {
   const webcamRef = React.useRef(null);
   const [imgSrc, setImgSrc] = React.useState(null);
 
@@ -44,9 +44,16 @@ const WebcamCapture = ({ handleBack, handleNext, collectionID }) => {
             <div style={{ maxWidth: '300px', margin: 'auto' }} >
               <Webcam audio={false} ref={webcamRef} screenshotFormat="image/jpeg" style={{ marginTop: '10px', width: '100%' }} />
             </div>
-            <div style={{ textAlign: 'center', fontSize: 'xx-large' }}>
+            {data.hasLabel &&
+              <div style={{ fontSize: 'xx-large' }}>
+                <u style={{ padding: '14px', fontSize: '14px', marginLeft: '30px', float: 'left', width:'102px' }} onClick={() => skipClick()}>{data.label}</u>
+                <i className="fa fa-camera" aria-hidden="true" onClick={capture}></i>
+              </div>
+            }
+            {!data.hasLabel && <div style={{ textAlign: 'center', fontSize: 'xx-large' }}>
               <i className="fa fa-camera" aria-hidden="true" onClick={capture}></i>
             </div>
+            }
           </>
         )}
         {imgSrc && (

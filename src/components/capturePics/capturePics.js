@@ -32,10 +32,14 @@ const CapturePics = ({ loadNextSection, formData }) => {
     mainImage1: {
       title: 'Main Image',
       caption: 'Capture the entire work including the frame from directly in front',
+      hasLabel: true,
+      label: 'Skip'
     },
     mainImage2: {
       title: 'Main Image (2)',
       caption: 'Take 2 steps to the right. This may reduce glare. Capture the entire work including the frame.',
+      hasLabel: true,
+      label: 'Not Signed'
     },
     mainImage3: {
       title: 'Main Image (3)',
@@ -60,7 +64,9 @@ const CapturePics = ({ loadNextSection, formData }) => {
     signatureCloseUp: {
       title: 'Close-up of the signature',
       caption: 'If the work is NOT signed press Not signed.',
-      helpEnable: true
+      helpEnable: true,
+      hasLabel: true,
+      label: 'Not Signed'
     },
     darkestArea: {
       title: 'Darkest Area',
@@ -87,15 +93,21 @@ const CapturePics = ({ loadNextSection, formData }) => {
     additionalImages: {
       title: 'Additional Images',
       caption: 'Please take any additional photographs of the objects surface.',
+      hasLabel: true,
+      label: 'Skip'
     },
     backFullPicture: {
       title: 'Full picture of paintings back',
       caption: 'Capture the entire work including the frame.',
+      hasLabel: true,
+      label: 'Skip'
     },
     galleryStickers: {
       title: 'Gallery Stickers',
       caption: 'Press No Stickers if there arent any.',
       isLast: true,
+      hasLabel: true,
+      label: 'No Stickers'
     },
   };
 
@@ -177,6 +189,14 @@ const CapturePics = ({ loadNextSection, formData }) => {
       setCurrentStage(nextObj.key);
     }
   };
+
+  const skipImage = () => {
+    setSelectedFile(null);
+    setSelectedType(null);
+    let nextObj = navObj(stages, currentStage, 1);
+    currentScreenCnt += 1;
+    setCurrentStage(nextObj.key);
+  }
 
   const handleBack = () => {
     const backObj = navObj(stages, currentStage, -1);
@@ -284,7 +304,7 @@ const CapturePics = ({ loadNextSection, formData }) => {
         </div>
         {selectedType === 'live' && (
           <div>
-            <WebcamCapture collectionID={collectionID} handleBack={handleBack} handleNext={handleNext} />
+            <WebcamCapture collectionID={collectionID} handleBack={handleBack} handleNext={handleNext} data={stages[currentStage]} skipClick={skipImage} />
           </div>
         )}
         {selectedType === 'upload' && (
