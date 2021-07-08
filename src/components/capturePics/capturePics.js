@@ -32,14 +32,10 @@ const CapturePics = ({ loadNextSection, formData }) => {
     mainImage1: {
       title: 'Main Image',
       caption: 'Capture the entire work including the frame from directly in front',
-      hasLabel: true,
-      label: 'Skip'
     },
     mainImage2: {
       title: 'Main Image (2)',
       caption: 'Take 2 steps to the right. This may reduce glare. Capture the entire work including the frame.',
-      hasLabel: true,
-      label: 'Not Signed'
     },
     mainImage3: {
       title: 'Main Image (3)',
