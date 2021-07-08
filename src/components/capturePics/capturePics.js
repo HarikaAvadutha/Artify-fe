@@ -16,6 +16,7 @@ const CapturePics = ({ loadNextSection, formData }) => {
   const [currentStage, setCurrentStage] = useState('info');
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedType, setSelectedType] = useState(null);
+  const [helpEnabled, toggleHelp] = useState(false);
   const imageInputRef = React.useRef();
 
   // const artId = `art-${generateUUID()}`;
@@ -32,70 +33,70 @@ const CapturePics = ({ loadNextSection, formData }) => {
       title: 'Main Image',
       caption: 'Capture the entire work including the frame from directly in front',
     },
-
-    // mainImage2: {
-    //   title: 'Main Image (2)',
-    //   caption: 'Take 2 steps to the right. This may reduce glare. Capture the entire work including the frame.',
-    // },
-    // mainImage3: {
-    //   title: 'Main Image (3)',
-    //   caption: 'Take 4 steps to the left. This may reduce glare. Capture the entire work including the frame.',
-    // },
-    // upperLeftQuadrant: {
-    //   title: 'Upper Left Quadrant',
-    //   caption: 'Align area in green rectangle.',
-    // },
-    // upperRightQuadrant: {
-    //   title: 'Upper Right Quadrant',
-    //   caption: 'Align area in green rectangle.',
-    // },
-    // lowerLeftQuadrant: {
-    //   title: 'Lower Left Quadrant',
-    //   caption: 'Align area in green rectangle.',
-    // },
-    // lowerRightQuadrant: {
-    //   title: 'Lower Right Quadrant',
-    //   caption: 'Align area in green rectangle.',
-    // },
-    // signatureCloseUp: {
-    //   title: 'Close-up of the signature',
-    //   caption: 'If the work is NOT signed press Not signed.',
-    // },
-    // darkestArea: {
-    //   title: 'Darkest Area',
-    //   caption: 'Stay in focus.',
-    // },
-    // lightestArea: {
-    //   title: 'Lightest Area',
-    //   caption: 'Stay in focus.',
-    // },
-    // media: {
-    //   title: 'Media',
-    //   caption:
-    //     'The way paint is applied to the surface tells us a lot about the artist and materials. Please take a close-up of the objects surface',
-    // },
-    // surface: {
-    //   title: 'Surface',
-    //   caption: 'Take a close-up of the surface where the texture is coming through.',
-    // },
-    // condition: {
-    //   title: 'Condition',
-    //   caption:
-    //     'Condition usually helps us get a sense of the objects age. Please capture any potential abrasions cracking, etc.',
-    // },
-    // additionalImages: {
-    //   title: 'Additional Images',
-    //   caption: 'Please take any additional photographs of the objects surface.',
-    // },
-    // backFullPicture: {
-    //   title: 'Full picture of paintings back',
-    //   caption: 'Capture the entire work including the frame.',
-    // },
-    // galleryStickers: {
-    //   title: 'Gallery Stickers',
-    //   caption: 'Press No Stickers if there arent any.',
-    //   isLast: true,
-    // },
+    mainImage2: {
+      title: 'Main Image (2)',
+      caption: 'Take 2 steps to the right. This may reduce glare. Capture the entire work including the frame.',
+    },
+    mainImage3: {
+      title: 'Main Image (3)',
+      caption: 'Take 4 steps to the left. This may reduce glare. Capture the entire work including the frame.',
+    },
+    upperLeftQuadrant: {
+      title: 'Upper Left Quadrant',
+      caption: 'Align area in green rectangle.',
+    },
+    upperRightQuadrant: {
+      title: 'Upper Right Quadrant',
+      caption: 'Align area in green rectangle.',
+    },
+    lowerLeftQuadrant: {
+      title: 'Lower Left Quadrant',
+      caption: 'Align area in green rectangle.',
+    },
+    lowerRightQuadrant: {
+      title: 'Lower Right Quadrant',
+      caption: 'Align area in green rectangle.',
+    },
+    signatureCloseUp: {
+      title: 'Close-up of the signature',
+      caption: 'If the work is NOT signed press Not signed.',
+      helpEnable: true
+    },
+    darkestArea: {
+      title: 'Darkest Area',
+      caption: 'Stay in focus.',
+    },
+    lightestArea: {
+      title: 'Lightest Area',
+      caption: 'Stay in focus.',
+    },
+    media: {
+      title: 'Media',
+      caption:
+        'The way paint is applied to the surface tells us a lot about the artist and materials. Please take a close-up of the objects surface',
+    },
+    surface: {
+      title: 'Surface',
+      caption: 'Take a close-up of the surface where the texture is coming through.',
+    },
+    condition: {
+      title: 'Condition',
+      caption:
+        'Condition usually helps us get a sense of the objects age. Please capture any potential abrasions cracking, etc.',
+    },
+    additionalImages: {
+      title: 'Additional Images',
+      caption: 'Please take any additional photographs of the objects surface.',
+    },
+    backFullPicture: {
+      title: 'Full picture of paintings back',
+      caption: 'Capture the entire work including the frame.',
+    },
+    galleryStickers: {
+      title: 'Gallery Stickers',
+      caption: 'Press No Stickers if there arent any.',
+      isLast: true,
+    },
   };
 
   const navObj = (obj, currentKey, direction) => {
@@ -188,6 +189,11 @@ const CapturePics = ({ loadNextSection, formData }) => {
     if (imageInputRef.current) imageInputRef.current.value = '';
   };
 
+  const onHelpClicked = (type, enabled = false) => {
+    if (enabled)
+      toggleHelp(type);
+  }
+
   const captureContainer = {
     maxWidth: '300px',
     margin: 'auto',
@@ -240,63 +246,83 @@ const CapturePics = ({ loadNextSection, formData }) => {
     width: '75px'
   }
 
-  return (
-    <div style={captureContainer}>
-      {currentStage === 'info' && Object.keys(stages[currentStage]).length && (
+
+  const captureHtml = <div style={captureContainer}>
+    {currentStage === 'info' && Object.keys(stages[currentStage]).length && (
+      <div>
+        <div style={title}>{stages[currentStage].title}</div>
         <div>
-          <div style={title}>{stages[currentStage].title}</div>
-          <div>
-            <p style={gold}> Our advanced computer vision:</p>
-            <ul style={groupList}>
-              <li>Stabilizes the camera</li>
-              <li>Corrects for camera positioning errors</li>
-              <li>Prevents out of focus images</li>
-              <li>Adapts to your room lighting</li>
-              <li>Creates full-frame image</li>
-              <li>Enhances resolution of fine detail and color.</li>
-            </ul>
-            <span className={ptTen}>Please be sure to avoid glare and harsh shadows.</span>
-          </div>
-          <button style={nextButton} onClick={handleNext}>
-            Next
-          </button>
+          <p style={gold}> Our advanced computer vision:</p>
+          <ul style={groupList}>
+            <li>Stabilizes the camera</li>
+            <li>Corrects for camera positioning errors</li>
+            <li>Prevents out of focus images</li>
+            <li>Adapts to your room lighting</li>
+            <li>Creates full-frame image</li>
+            <li>Enhances resolution of fine detail and color.</li>
+          </ul>
+          <span className={ptTen}>Please be sure to avoid glare and harsh shadows.</span>
         </div>
-      )}
-      {
-        currentStage !== 'info' && Object.keys(stages[currentStage]).length && (
-          <div>
-            <div>
-              <div style={{ fontSize: '15px' }}>{stages[currentStage].title}</div>
-              <div>{stages[currentStage].caption}
-              <FontAwesome
-                      name="question-circle"
-                      size="2x"
-                      style={{ padding: '10px', color: 'white', minWidth: '75px' }}
-                    />
-              </div>
-              <Button style={manualBackButton} onClick={() => handleSelectedType('upload')}>Manual</Button>
-              <Button style={autoNextButton} onClick={() => handleSelectedType('live')}>Auto</Button>
-            </div>
-            {selectedType === 'live' && (
-              <div>
-                <WebcamCapture collectionID={collectionID} handleBack={handleBack} handleNext={handleNext} />
-              </div>
-            )}
-            {selectedType === 'upload' && (
-              <div style={{ margin: '25px 0' }}>
-                <input type="file" ref={imageInputRef} onChange={($event) => handleFileInput($event.target.files[0])} />
-                <Button style={manualBackButton} className="next-button" onClick={handleBack}>
-                  Back
-                </Button>
-                <Button style={autoNextButton} className="next-button" onClick={() => handleNext({ imgSrc: '', type: 'upload' })}>
-                  Next
-                </Button>
-              </div>
-            )}
+        <button style={nextButton} onClick={handleNext}>
+          Next
+        </button>
+      </div>
+    )}
+    {currentStage !== 'info' && Object.keys(stages[currentStage]).length && (
+      <div>
+        <div>
+          <div style={{ fontSize: '15px' }}>{stages[currentStage].title}</div>
+          <div>{stages[currentStage].caption}
+            <FontAwesome
+              name="question-circle"
+              size="2x"
+              onClick={() => onHelpClicked(true, stages[currentStage]?.helpEnable)}
+              style={{ padding: '5px', color: 'white', float: 'right' }} />
           </div>
-        )
-      }
-    </div >
+          <Button style={manualBackButton} onClick={() => handleSelectedType('upload')}>Manual</Button>
+          <Button style={autoNextButton} onClick={() => handleSelectedType('live')}>Auto</Button>
+        </div>
+        {selectedType === 'live' && (
+          <div>
+            <WebcamCapture collectionID={collectionID} handleBack={handleBack} handleNext={handleNext} />
+          </div>
+        )}
+        {selectedType === 'upload' && (
+          <div style={{ margin: '25px 0' }}>
+            <input type="file" ref={imageInputRef} onChange={($event) => handleFileInput($event.target.files[0])} />
+            <Button style={manualBackButton} className="next-button" onClick={handleBack}>
+              Back
+            </Button>
+            <Button style={autoNextButton} className="next-button" onClick={() => handleNext({ imgSrc: '', type: 'upload' })}>
+              Next
+            </Button>
+          </div>
+        )}
+      </div>
+    )}
+  </div>;
+
+  const helpTemplate = <div style={captureContainer}>
+    <div style={{ paddingTop: '10px' }}>
+      <FontAwesome
+        name="chevron-circle-left"
+        size="2x"
+        onClick={() => onHelpClicked(false, true)}
+        style={{ padding: '5px', color: 'white' }} />
+    </div>
+    <div style={{ fontSize: '20px', fontWeight: '700', color: 'white', paddingTop: '15px' }}>
+      SIGNATURE HELP
+    </div>
+    <p style={{ color: 'white' }}>If the artwork contains a signature, align the <span style={{ color: 'green' }}>GREEN RETANGLE</span> around the artist's signature</p>
+    <p style={{ color: 'white', paddingTop: '15px' }}>If the work is NOT signed press Not Signed</p>
+  </div>;
+
+  const renderTemplate = () => {
+    return helpEnabled ? helpTemplate : captureHtml;
+  }
+
+  return (
+    renderTemplate()
   );
 };
 
