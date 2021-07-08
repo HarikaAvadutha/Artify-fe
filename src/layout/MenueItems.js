@@ -47,40 +47,15 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
       
       <Menu.Item key="home" icon={!topMenu && <FeatherIcon icon="home" />} >
         <NavLink onClick={toggleCollapsed} to={`${path}`}>
-          Overview
-        </NavLink>
-      </Menu.Item>
-      
-      <Menu.Item key="catalogue" icon={!topMenu && <FeatherIcon icon="image" />} >
-        <NavLink onClick={toggleCollapsed} to={`${path}/components/upload`}>
-          Upload
-        </NavLink>
-      </Menu.Item>
-
-      <Menu.Item key="userwfl" icon={!topMenu && <FeatherIcon icon="camera" />} >
-        <NavLink onClick={toggleCollapsed} to={`${path}/wizards/two`}>
-          Capture Image
-        </NavLink>
-      </Menu.Item>
-      
-      <Menu.Item key="gallery" icon={!topMenu && <FeatherIcon icon="eye" />} >
-        <NavLink onClick={toggleCollapsed} to={`${path}/gallery/one`}>
-          Gallery
-        </NavLink>
-      </Menu.Item>
-      
-      <Menu.Item key="analytics" icon={!topMenu && <FeatherIcon icon="bar-chart-2" />} >
-        <NavLink onClick={toggleCollapsed} to={`${path}/performance`}>
-          Identification
+          Collection
         </NavLink>
       </Menu.Item>
 
       <Menu.Item key="dashboard" icon={!topMenu && <FeatherIcon icon="bar-chart-2" />} >
         <NavLink onClick={toggleCollapsed} to={`${path}/users/upload`}>
-          User Dashboard
+          Capture Image
         </NavLink>
-      </Menu.Item>
-
+      </Menu.Item>   
     </Menu>
   );
 };

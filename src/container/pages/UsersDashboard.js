@@ -11,8 +11,9 @@ import OnStart from '../../components/OnStart';
 import CapturePics from '../../components/capturePics/capturePics';
 import Ownership from '../../components/ownership/ownership';
 import Review from '../../components/reviewForm';
+import { BASE_API_URL } from '../../settings';
 
-const SERVER_ENDPOINT = 'http://localhost:5000/api/analytics/';
+const SERVER_ENDPOINT = `${BASE_API_URL}/api/analytics/`;
 let formData = {
   artWorkInfo: {},
   takePictures: {},

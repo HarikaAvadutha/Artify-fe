@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Field from './field';
 import { OnStart as Start } from './style';
+import FeatherIcon from 'feather-icons-react';
 
 let currentScreenCnt = 1;
 export default function OnStart({ loadNextSection }) {
@@ -242,7 +243,12 @@ export default function OnStart({ loadNextSection }) {
     <Start style={{ background: '#0B1A23'}}>
       <div className="onstart-container on-start">
         <div className="d-flex status-bar-div" style={{ minHeight: '120px' }}>
-          <div className='status-bar'></div>
+          <div className='status-bar'>
+            {formData[0].value !==''?
+            <FeatherIcon icon="check-circle" size={30} style={{color:'#BAA06A'}}/>
+            :
+          <FeatherIcon icon="circle" size={30} style={{color:'#BAA06A'}}/>  }
+          </div>
           <div className='status-bar'></div>
           <div className='status-bar'></div>
           <div className='status-bar'></div>

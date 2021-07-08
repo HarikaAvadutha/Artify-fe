@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { post } from 'axios';
 import WebcamCapture from '../camera/camera';
 import { Button } from '../buttons/buttons';
+import { BASE_API_URL } from '../../settings';
+import FontAwesome from 'react-fontawesome';
 
 // const collectionID = `coll-${generateUUID()}`;
 const collectionID = Math.floor(Math.random() * 1000000000);
 
-const SERVER_ENDPOINT = 'http://localhost:5000/api/art/';
+const SERVER_ENDPOINT = `${BASE_API_URL}/api/art/`;
 // eslint-disable-next-line no-unused-vars
 let currentScreenCnt = 1;
 
@@ -30,6 +32,7 @@ const CapturePics = ({ loadNextSection, formData }) => {
       title: 'Main Image',
       caption: 'Capture the entire work including the frame from directly in front',
     },
+
     // mainImage2: {
     //   title: 'Main Image (2)',
     //   caption: 'Take 2 steps to the right. This may reduce glare. Capture the entire work including the frame.',
@@ -264,7 +267,13 @@ const CapturePics = ({ loadNextSection, formData }) => {
           <div>
             <div>
               <div style={{ fontSize: '15px' }}>{stages[currentStage].title}</div>
-              <div>{stages[currentStage].caption}</div>
+              <div>{stages[currentStage].caption}
+              <FontAwesome
+                      name="question-circle"
+                      size="2x"
+                      style={{ padding: '10px', color: 'white', minWidth: '75px' }}
+                    />
+              </div>
               <Button style={manualBackButton} onClick={() => handleSelectedType('upload')}>Manual</Button>
               <Button style={autoNextButton} onClick={() => handleSelectedType('live')}>Auto</Button>
             </div>

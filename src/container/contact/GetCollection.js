@@ -3,7 +3,7 @@ import { get } from 'axios';
 
 const GetImages = () => {
   const [images, setImages] = useState([]);
-  const SERVER_ENDPOINT = 'http://localhost:5000/api/art/';
+  const SERVER_ENDPOINT = 'http://localhost:5100/api/art/';
 
   const getCollections = () => {
     const config = {
