@@ -133,12 +133,14 @@ const CapturePics = ({ loadNextSection, formData }) => {
     if (!mainImage) {
       mainImage = type === 'upload' ? selectedFile : imgSrc;
     }
+    console.log('finalfile', finalFile.type)
     const payload = new FormData();
     payload.append('userId',JSON.parse(localStorage.getItem('user')).id);
     payload.append('artworkId', artId);
     payload.append('image_title', stages[currentStage].title);
-    payload.append('image_type', type);
+    payload.append('image_type', finalFile.type.split('/')[1] === 'jpeg' ? 'jpg' : finalFile.type.split('/')[1]);
     payload.append('raw_image', finalFile);
+    payload.append('filelen', finalFile.size);
     const config = {
       headers: {
         'content-type': 'multipart/form-data',

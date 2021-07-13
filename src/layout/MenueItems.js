@@ -44,16 +44,41 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
       openKeys={openKeys}
     >
 
+      {JSON.parse(localStorage.getItem('user'))?.groups[0]?.name === "user" &&
       <Menu.Item key="home" icon={!topMenu && <FeatherIcon icon="home" />} >
         <NavLink onClick={toggleCollapsed} to={`${path}`}>
-          Collection
+          Art work
         </NavLink>
-      </Menu.Item>
+      </Menu.Item>}
 
       {JSON.parse(localStorage.getItem('user'))?.groups[0]?.name === "user" &&
         <Menu.Item key="dashboard" icon={!topMenu && <FeatherIcon icon="bar-chart-2" />} >
           <NavLink onClick={toggleCollapsed} to={`${path}/users/upload`}>
             Capture Image
+          </NavLink>
+        </Menu.Item>}
+        {JSON.parse(localStorage.getItem('user'))?.groups[0]?.name === "expert" &&
+        <Menu.Item key="dashboard" icon={!topMenu && <FeatherIcon icon="bar-chart-2" />} >
+          <NavLink onClick={toggleCollapsed} to={`${path}`}>
+            Dashboard
+          </NavLink>
+        </Menu.Item>}
+        {JSON.parse(localStorage.getItem('user'))?.groups[0]?.name === "expert" &&
+        <Menu.Item key="dashboard" icon={!topMenu && <FeatherIcon icon="pushpin" />} >
+          <NavLink onClick={toggleCollapsed} to={`${path}`}>
+            Identification
+          </NavLink>
+        </Menu.Item>}
+        {JSON.parse(localStorage.getItem('user'))?.groups[0]?.name === "expert" &&
+        <Menu.Item key="dashboard" icon={!topMenu && <FeatherIcon icon="book" />} >
+          <NavLink onClick={toggleCollapsed} to={`${path}`}>
+            Catalogue / Valuation
+          </NavLink>
+        </Menu.Item>}
+        {JSON.parse(localStorage.getItem('user'))?.groups[0]?.name === "expert" &&
+        <Menu.Item key="dashboard" icon={!topMenu && <FeatherIcon icon="image" />} >
+          <NavLink onClick={toggleCollapsed} to={`${path}`}>
+            Build Buyer View
           </NavLink>
         </Menu.Item>}
     </Menu>

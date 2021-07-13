@@ -4,7 +4,7 @@ import { generateUUID } from '../../utility/utility';
 import { Button } from '../buttons/buttons';
 
 const collectionID = `coll-${generateUUID()}`;
-const SERVER_ENDPOINT = 'http://localhost:5000/api/artdocs';
+const SERVER_ENDPOINT = 'http://localhost:5100/api/artdocs';
 
 const Ownership = ({ loadNextSection, formData }) => {
   const [currentStage, setCurrentStage] = useState('purchase');

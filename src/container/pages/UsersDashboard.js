@@ -11,7 +11,7 @@ import Ownership from '../../components/ownership/ownership';
 import Review from '../../components/reviewForm';
 import { BASE_API_URL } from '../../settings';
 
-const SERVER_ENDPOINT = `${BASE_API_URL}/api/analytics/`;
+const SERVER_ENDPOINT = `${BASE_API_URL}/api/artwork/`;
 let formData = {
   artWorkInfo: {},
   takePictures: {},

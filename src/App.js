@@ -11,6 +11,7 @@ import Auth from './routes/auth';
 import './static/css/style.css';
 import config from './config/config';
 import ProtectedRoute from './components/utilities/protectedRoute';
+import expert from './routes/expert';
 
 const { theme } = config;
 
@@ -36,12 +37,19 @@ const ProviderConfig = () => {
     return () => (unmounted = true);
   }, [setPath]);
 
+    let userRole = JSON.parse(localStorage.getItem('user'))?.groups[0]?.name;
   return (
     <ConfigProvider direction={rtl ? 'rtl' : 'ltr'}>
       <ThemeProvider theme={{ ...theme, rtl, topMenu, darkMode }}>
         <Router basename={process.env.PUBLIC_URL}>
-          {!isAuthenticated ? <Route path="/" component={Auth} /> : <ProtectedRoute path="/admin" component={Admin} />}
+          {!isAuthenticated ? 
+            <Route path="/" component={Auth} /> :
+            userRole === 'expert' ?
+            <ProtectedRoute path="/expert" component={expert}/> :
+            <ProtectedRoute path="/admin" component={Admin} />}
           {isAuthenticated && (path === process.env.PUBLIC_URL || path === `${process.env.PUBLIC_URL}/`) && (
+            userRole === 'expert' ?
+            <Redirect to="/expert" /> :
             <Redirect to="/admin" />
           )}
         </Router>

@@ -7,6 +7,12 @@ const OnStart = Styled.div`
         max-width: 300px;
         margin: auto;
     }
+    .status-update{
+        padding:10px;        
+    }
+    .status-active{
+        border-bottom:4px solid white;
+    }
     .status-bar-div {
         min-height: 120px;
         .status-bar  {

@@ -243,17 +243,76 @@ export default function OnStart({ loadNextSection }) {
     <Start style={{ background: '#0B1A23'}}>
       <div className="onstart-container on-start">
         <div className="d-flex status-bar-div" style={{ minHeight: '120px' }}>
-          <div className='status-bar'>
-            {formData[0].value !==''?
+          <div className='status-update'>
+            {activeIndex >0?
+            <div>
             <FeatherIcon icon="check-circle" size={30} style={{color:'#BAA06A'}}/>
+            </div>
             :
-          <FeatherIcon icon="circle" size={30} style={{color:'#BAA06A'}}/>  }
+            <div className="status-active">
+            <FeatherIcon icon="circle" size={30} style={{color:'#BAA06A', fill:'#BAA06A'}}/> 
+          </div> }
           </div>
-          <div className='status-bar'></div>
-          <div className='status-bar'></div>
-          <div className='status-bar'></div>
-          <div className='status-bar'></div>
-          <div className='status-bar'></div>
+          <div className='status-update'>
+            {activeIndex >1?
+            <div>
+            <FeatherIcon icon="check-circle" size={30} style={{color:'#BAA06A'}}/>
+            </div>
+            :
+            activeIndex < 1?
+              <FeatherIcon icon="circle" size={30} style={{color:'#BAA06A', fill:'#BAA06A', opacity:0.3}}/> :
+            <div className="status-active">
+            <FeatherIcon icon="circle" size={30} style={{color:'#BAA06A', fill:'#BAA06A'}}/> 
+          </div> }
+          </div>
+          <div className='status-update'>
+            {activeIndex >2?
+            <div>
+            <FeatherIcon icon="check-circle" size={30} style={{color:'#BAA06A'}}/>
+            </div>
+            :
+            activeIndex < 2?
+              <FeatherIcon icon="circle" size={30} style={{color:'#BAA06A', fill:'#BAA06A', opacity:0.3}}/> :
+            <div className="status-active">
+            <FeatherIcon icon="circle" size={30} style={{color:'#BAA06A', fill:'#BAA06A'}}/> 
+          </div> }
+          </div>
+          <div className='status-update'>
+            {activeIndex >3?
+            <div>
+            <FeatherIcon icon="check-circle" size={30} style={{color:'#BAA06A'}}/>
+            </div>
+            :
+            activeIndex < 3?
+              <FeatherIcon icon="circle" size={30} style={{color:'#BAA06A', fill:'#BAA06A', opacity:0.3}}/> :
+            <div className="status-active">
+            <FeatherIcon icon="circle" size={30} style={{color:'#BAA06A', fill:'#BAA06A'}}/> 
+          </div> }
+          </div>
+          <div className='status-update'>
+            {activeIndex >4?
+            <div>
+            <FeatherIcon icon="check-circle" size={30} style={{color:'#BAA06A'}}/>
+            </div>
+            :
+            activeIndex < 4?
+              <FeatherIcon icon="circle" size={30} style={{color:'#BAA06A', fill:'#BAA06A', opacity:0.3}}/> :
+            <div className="status-active">
+            <FeatherIcon icon="circle" size={30} style={{color:'#BAA06A', fill:'#BAA06A'}}/> 
+          </div> }
+          </div>
+          <div className='status-update'>
+            {activeIndex >5?
+            <div>
+            <FeatherIcon icon="check-circle" size={30} style={{color:'#BAA06A'}}/>
+            </div>
+            :
+            activeIndex < 5?
+              <FeatherIcon icon="circle" size={30} style={{color:'#BAA06A', fill:'#BAA06A', opacity:0.3}}/> :
+            <div className="status-active">
+            <FeatherIcon icon="circle" size={30} style={{color:'#BAA06A', fill:'#BAA06A'}}/> 
+          </div> }
+          </div>
         </div>
         <div>{formData.map(value => renderMarkup(value))}</div>
       </div>
