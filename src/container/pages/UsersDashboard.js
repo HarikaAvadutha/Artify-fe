@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-// import { useSelector } from 'react-redux';
 import { Row, Col } from 'antd';
-// import { useRouteMatch } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
 import { post } from 'axios';
 import { UsercardWrapper } from './style';
@@ -45,17 +43,28 @@ const Users = () => {
     if($e) {
       $e.preventDefault();
     }
-    console.log('formData', formData.ownership.takePictures);
+    console.log('formData', formData);
     const payload = new FormData();
-    payload.append('remark', 'Test Remark');
-    payload.append(
-      'file',
-      formData.ownership.takePictures,
-      // formData.ownership.takePictures.indexOf('base64') > -1
-      //   ? converBase64toFileObj(formData.ownership.takePictures)
-      //   : blobToFile(formData.ownership.takePictures),
-      // localStorage.getItem('mainImage')
-    );
+    payload.append('userId',JSON.parse(localStorage.getItem('user')).id);
+    payload.append('artist_name', formData.artWorkInfo.values['Artist Name']);
+    payload.append('art_title', formData.artWorkInfo.values['Artwork Title']);
+    payload.append('work_type', formData.artWorkInfo.values['Work Type']);
+    payload.append('media_type', formData.artWorkInfo.values['Media']);
+    payload.append('support_type', formData.artWorkInfo.values['Support']);
+    payload.append('art_width', formData.artWorkInfo.values['Dimensions'][0].value);
+    payload.append('art_height', formData.artWorkInfo.values['Dimensions'][1].value);
+    payload.append('measure_units', formData.artWorkInfo.values['Dimensions'][0].type);
+    payload.append('purchase_price', formData.ownership.purchase_price);
+    payload.append('loc_city', formData.ownership.city);
+    payload.append('loc_state', formData.ownership.state);
+    // payload.append(
+    //   'file',
+    //   formData.ownership.takePictures,
+    //   // formData.ownership.takePictures.indexOf('base64') > -1
+    //   //   ? converBase64toFileObj(formData.ownership.takePictures)
+    //   //   : blobToFile(formData.ownership.takePictures),
+    //   // localStorage.getItem('mainImage')
+    // );
     const config = {
       headers: {
         'content-type': 'multipart/form-data',

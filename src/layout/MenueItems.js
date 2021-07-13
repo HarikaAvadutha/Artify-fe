@@ -34,28 +34,28 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
       defaultSelectedKeys={
         !topMenu
           ? [
-              `${
-                mainPathSplit.length === 1 ? 'home' : mainPathSplit.length === 2 ? mainPathSplit[1] : mainPathSplit[2]
-              }`,
-            ]
+            `${mainPathSplit.length === 1 ? 'home' : mainPathSplit.length === 2 ? mainPathSplit[1] : mainPathSplit[2]
+            }`,
+          ]
           : []
       }
       defaultOpenKeys={!topMenu ? [`${mainPathSplit.length > 2 ? mainPathSplit[1] : 'dashboard'}`] : []}
       overflowedIndicator={<FeatherIcon icon="more-vertical" />}
       openKeys={openKeys}
     >
-      
+
       <Menu.Item key="home" icon={!topMenu && <FeatherIcon icon="home" />} >
         <NavLink onClick={toggleCollapsed} to={`${path}`}>
           Collection
         </NavLink>
       </Menu.Item>
 
-      <Menu.Item key="dashboard" icon={!topMenu && <FeatherIcon icon="bar-chart-2" />} >
-        <NavLink onClick={toggleCollapsed} to={`${path}/users/upload`}>
-          Capture Image
-        </NavLink>
-      </Menu.Item>   
+      {JSON.parse(localStorage.getItem('user'))?.groups[0]?.name === "user" &&
+        <Menu.Item key="dashboard" icon={!topMenu && <FeatherIcon icon="bar-chart-2" />} >
+          <NavLink onClick={toggleCollapsed} to={`${path}/users/upload`}>
+            Capture Image
+          </NavLink>
+        </Menu.Item>}
     </Menu>
   );
 };

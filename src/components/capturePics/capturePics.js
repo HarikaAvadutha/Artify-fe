@@ -5,10 +5,9 @@ import { Button } from '../buttons/buttons';
 import { BASE_API_URL } from '../../settings';
 import FontAwesome from 'react-fontawesome';
 
-// const collectionID = `coll-${generateUUID()}`;
 const collectionID = Math.floor(Math.random() * 1000000000);
 
-const SERVER_ENDPOINT = `${BASE_API_URL}/api/art/`;
+const SERVER_ENDPOINT = `${BASE_API_URL}/api/artimage/`;
 // eslint-disable-next-line no-unused-vars
 let currentScreenCnt = 1;
 
@@ -33,78 +32,78 @@ const CapturePics = ({ loadNextSection, formData }) => {
       title: 'Main Image',
       caption: 'Capture the entire work including the frame from directly in front',
     },
-    mainImage2: {
-      title: 'Main Image (2)',
-      caption: 'Take 2 steps to the right. This may reduce glare. Capture the entire work including the frame.',
-    },
-    mainImage3: {
-      title: 'Main Image (3)',
-      caption: 'Take 4 steps to the left. This may reduce glare. Capture the entire work including the frame.',
-    },
-    upperLeftQuadrant: {
-      title: 'Upper Left Quadrant',
-      caption: 'Align area in green rectangle.',
-    },
-    upperRightQuadrant: {
-      title: 'Upper Right Quadrant',
-      caption: 'Align area in green rectangle.',
-    },
-    lowerLeftQuadrant: {
-      title: 'Lower Left Quadrant',
-      caption: 'Align area in green rectangle.',
-    },
-    lowerRightQuadrant: {
-      title: 'Lower Right Quadrant',
-      caption: 'Align area in green rectangle.',
-    },
-    signatureCloseUp: {
-      title: 'Close-up of the signature',
-      caption: 'If the work is NOT signed press Not signed.',
-      helpEnable: true,
-      hasLabel: true,
-      label: 'Not Signed'
-    },
-    darkestArea: {
-      title: 'Darkest Area',
-      caption: 'Stay in focus.',
-    },
-    lightestArea: {
-      title: 'Lightest Area',
-      caption: 'Stay in focus.',
-    },
-    media: {
-      title: 'Media',
-      caption:
-        'The way paint is applied to the surface tells us a lot about the artist and materials. Please take a close-up of the objects surface',
-    },
-    surface: {
-      title: 'Surface',
-      caption: 'Take a close-up of the surface where the texture is coming through.',
-    },
-    condition: {
-      title: 'Condition',
-      caption:
-        'Condition usually helps us get a sense of the objects age. Please capture any potential abrasions cracking, etc.',
-    },
-    additionalImages: {
-      title: 'Additional Images',
-      caption: 'Please take any additional photographs of the objects surface.',
-      hasLabel: true,
-      label: 'Skip'
-    },
-    backFullPicture: {
-      title: 'Full picture of paintings back',
-      caption: 'Capture the entire work including the frame.',
-      hasLabel: true,
-      label: 'Skip'
-    },
-    galleryStickers: {
-      title: 'Gallery Stickers',
-      caption: 'Press No Stickers if there arent any.',
-      isLast: true,
-      hasLabel: true,
-      label: 'No Stickers'
-    },
+    // mainImage2: {
+    //   title: 'Main Image (2)',
+    //   caption: 'Take 2 steps to the right. This may reduce glare. Capture the entire work including the frame.',
+    // },
+    // mainImage3: {
+    //   title: 'Main Image (3)',
+    //   caption: 'Take 4 steps to the left. This may reduce glare. Capture the entire work including the frame.',
+    // },
+    // upperLeftQuadrant: {
+    //   title: 'Upper Left Quadrant',
+    //   caption: 'Align area in green rectangle.',
+    // },
+    // upperRightQuadrant: {
+    //   title: 'Upper Right Quadrant',
+    //   caption: 'Align area in green rectangle.',
+    // },
+    // lowerLeftQuadrant: {
+    //   title: 'Lower Left Quadrant',
+    //   caption: 'Align area in green rectangle.',
+    // },
+    // lowerRightQuadrant: {
+    //   title: 'Lower Right Quadrant',
+    //   caption: 'Align area in green rectangle.',
+    // },
+    // signatureCloseUp: {
+    //   title: 'Close-up of the signature',
+    //   caption: 'If the work is NOT signed press Not signed.',
+    //   helpEnable: true,
+    //   hasLabel: true,
+    //   label: 'Not Signed'
+    // },
+    // darkestArea: {
+    //   title: 'Darkest Area',
+    //   caption: 'Stay in focus.',
+    // },
+    // lightestArea: {
+    //   title: 'Lightest Area',
+    //   caption: 'Stay in focus.',
+    // },
+    // media: {
+    //   title: 'Media',
+    //   caption:
+    //     'The way paint is applied to the surface tells us a lot about the artist and materials. Please take a close-up of the objects surface',
+    // },
+    // surface: {
+    //   title: 'Surface',
+    //   caption: 'Take a close-up of the surface where the texture is coming through.',
+    // },
+    // condition: {
+    //   title: 'Condition',
+    //   caption:
+    //     'Condition usually helps us get a sense of the objects age. Please capture any potential abrasions cracking, etc.',
+    // },
+    // additionalImages: {
+    //   title: 'Additional Images',
+    //   caption: 'Please take any additional photographs of the objects surface.',
+    //   hasLabel: true,
+    //   label: 'Skip'
+    // },
+    // backFullPicture: {
+    //   title: 'Full picture of paintings back',
+    //   caption: 'Capture the entire work including the frame.',
+    //   hasLabel: true,
+    //   label: 'Skip'
+    // },
+    // galleryStickers: {
+    //   title: 'Gallery Stickers',
+    //   caption: 'Press No Stickers if there arent any.',
+    //   isLast: true,
+    //   hasLabel: true,
+    //   label: 'No Stickers'
+    // },
   };
 
   const navObj = (obj, currentKey, direction) => {
@@ -135,12 +134,11 @@ const CapturePics = ({ loadNextSection, formData }) => {
       mainImage = type === 'upload' ? selectedFile : imgSrc;
     }
     const payload = new FormData();
-    payload.append('artId', artId);
-    payload.append('collectionId', collectionID);
-    payload.append('artName', formData.artWorkInfo.values['Artist Name']);
-    payload.append('artNotes', 'Test ArtName');
-    payload.append('filelen', Math.round(finalFile.size / 1000));
-    payload.append('originalImage', finalFile);
+    payload.append('userId',JSON.parse(localStorage.getItem('user')).id);
+    payload.append('artworkId', artId);
+    payload.append('image_title', stages[currentStage].title);
+    payload.append('image_type', type);
+    payload.append('raw_image', finalFile);
     const config = {
       headers: {
         'content-type': 'multipart/form-data',

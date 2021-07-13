@@ -36,6 +36,7 @@ const AuthReducer = (state = initState, action) => {
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:
       localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
       return {
         ...state,
         ...data,
@@ -48,6 +49,7 @@ const AuthReducer = (state = initState, action) => {
     case REGISTER_ERR:
     case AUTH_ERR:
       localStorage.removeItem('token');
+      localStorage.removeItem('user');
       return {
         ...state,
         token: null,

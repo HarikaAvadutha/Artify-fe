@@ -4,12 +4,13 @@ import { generateUUID } from '../../utility/utility';
 import { Button } from '../buttons/buttons';
 
 const collectionID = `coll-${generateUUID()}`;
-// const SERVER_ENDPOINT = 'http://localhost:5000/api/art/';
+const SERVER_ENDPOINT = 'http://localhost:5000/api/artdocs';
 
 const Ownership = ({ loadNextSection, formData }) => {
   const [currentStage, setCurrentStage] = useState('purchase');
   const [, setSelectedFile] = useState(null);
   const [selectedType, setSelectedType] = useState(null);
+  let [values, setValues] = React.useState({});
   const imageInputRef = React.useRef();
   // eslint-disable-next-line no-unused-vars
   let currentScreenCnt = 1;
@@ -17,6 +18,7 @@ const Ownership = ({ loadNextSection, formData }) => {
   const stages = {
     purchase: {
       title: 'Your Purchase Price',
+      value: ''
     },
     provenance: {
       title: 'Provenance & Documents',
@@ -24,6 +26,10 @@ const Ownership = ({ loadNextSection, formData }) => {
     paintingLocation: {
       title: 'Where is the painting located now?',
       caption: 'Optional',
+      value: {
+        city: '',
+        state: ''
+      }
     },
   };
 
@@ -57,7 +63,7 @@ const Ownership = ({ loadNextSection, formData }) => {
     if (!Object.values(nextObj).filter(Boolean).length) {
       loadNextSection({
         name: 'ownership',
-        data: stages
+        data: values
       });
     } else {
       setCurrentStage(nextObj.key);
@@ -70,10 +76,13 @@ const Ownership = ({ loadNextSection, formData }) => {
   };
 
   const onPurchaseAmountChange = ($event) => {
-    console.log('Entered Amount', $event)
+    setValues({ ...values, 'purchase_price': $event.target.value });
   }
-  const onLocationChange = ($event) => {
-    console.log('Entered Amount', $event)
+  const onLocationChange = ($event, type) => {
+    (type === 'city') ?
+      setValues({ ...values, 'city': $event.target.value }) :
+      setValues({ ...values, 'state': $event.target.value });
+
   }
 
   const handleSelectedType = (selctedType) => {
