@@ -92,6 +92,7 @@ const Users = () => {
   };
 
   const reviewApplication = () => {
+    console.log('formData', formData.takePictures.artworkId);
     setShowForm('review');
   }
 
@@ -225,7 +226,7 @@ const Users = () => {
                 <Button
                   className="rvw_btn"
                   type="button"
-                  disabled={shouldButtonDisable()}
+                  // disabled={shouldButtonDisable()}
                   onClick={() => reviewApplication()}
                   style={{ height: '50px', width: '130px', alignSelf: 'center', margin: '10px', borderRadius: '50px', backgroundColor: '#BAA06A', fontSize: '20px', fontWeight: 'bolder', color: '#0B1A23' }}
                 >

@@ -2,7 +2,7 @@ import React from 'react';
 import Webcam from 'react-webcam';
 import { Button } from '../buttons/buttons';
 
-const WebcamCapture = ({ handleBack, handleNext, collectionID, data, skipClick }) => {
+const WebcamCapture = ({ handleBack, handleNext, artworkId, data, skipClick }) => {
   const webcamRef = React.useRef(null);
   const [imgSrc, setImgSrc] = React.useState(null);
 
