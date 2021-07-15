@@ -9,13 +9,13 @@ export default function Submission() {
             name: 'Roger Massey',
             submitted: '06/01/2021',
             artist: 'Picasso',
-            priority: 'high'
+            priority: 'High'
         },
         {
             name: 'Roger Massey',
             submitted: '03/01/2021',
             artist: 'Picasso',
-            priority: 'high'
+            priority: 'High'
         },
         {
             name: 'Roger Massey',
@@ -45,13 +45,13 @@ export default function Submission() {
             name: 'Roger Massey',
             submitted: '04/01/2021',
             artist: 'Picasso',
-            priority: 'high'
+            priority: 'High'
         },
         {
             name: 'Roger Massey',
             submitted: '04/01/2021',
             artist: 'Picasso',
-            priority: 'high'
+            priority: 'High'
         },
         {
             name: 'Roger Massey',
@@ -91,7 +91,19 @@ export default function Submission() {
                 <Col lg={6} md={6} xs={6}>Priorty</Col>
             </Row>
             <div className="borderLine"></div>
-            
+            {
+                newSubmissions.map(item => {
+                    return (
+                        <Row className="tableItems">
+                            <Col lg={6} md={6} xs={6}>{item.name}</Col>
+                            <Col lg={6} md={6} xs={6} className="textWrapEllipse">{item.submitted}</Col>
+                            <Col lg={6} md={6} xs={6}>{item.artist}</Col>
+                            <Col lg={4} md={4} xs={4} style={{ textAlign: 'right' }}>{item.priority}</Col>
+                            <Col lg={2} md={2} xs={2}></Col>
+                        </Row>
+                    )
+                })
+            }
         </TemplateSub>
     )
 };

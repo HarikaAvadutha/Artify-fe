@@ -63,9 +63,20 @@ export default function Offers() {
             <Row className="tableHeader">
                 <Col lg={10} md={10} xs={10}>Seller</Col>
                 <Col lg={6} md={6} xs={6}>Status</Col>
-                <Col lg={8} md={8} xs={8} style={{textAlign: 'right'}}>Days to Sale</Col>
+                <Col lg={8} md={8} xs={8} style={{ textAlign: 'right' }}>Days to Sale</Col>
             </Row>
             <div className="borderLine"></div>
+            {
+                offers.map(item => {
+                    return (
+                        <Row className="tableItems">
+                            <Col lg={10} md={10} xs={10}>{item.name}</Col>
+                            <Col lg={6} md={6} xs={6}>{item.status? item.status : 'Inc'}</Col>
+                            <Col lg={8} md={8} xs={8} style={{ textAlign: 'right' }}>{item.daysToSale? item.daysToSale : '-'}</Col>
+                        </Row>
+                    )
+                })
+            }
         </TemplateOff>
     )
 };

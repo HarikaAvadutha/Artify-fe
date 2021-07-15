@@ -102,7 +102,7 @@ export default function InProgress() {
             priority: 'Low',
             status: 'NSV',
             amount: null,
-            daysToRespond: null
+            daysToRespond: 30
         },
         {
             name: 'Roger Massey',
@@ -111,7 +111,7 @@ export default function InProgress() {
             priority: 'Low',
             status: 'NSV',
             amount: null,
-            daysToRespond: null
+            daysToRespond: 30
         }
     ];
 
@@ -127,6 +127,20 @@ export default function InProgress() {
                 <Col lg={7} md={7} xs={7}>Days to Respond</Col>
             </Row>
             <div className="borderLine"></div>
+            {
+                inProgress.map(item => {
+                    return (
+                        <Row className="tableItems">
+                            <Col lg={5} md={5} xs={5}>{item.name}</Col>
+                            <Col lg={6} md={6} xs={6}>{item.artist}</Col>
+                            <Col lg={4} md={4} xs={4} style={{textAlign: 'right'}}>{item.status}</Col>
+                            <Col lg={2} md={2} xs={2}></Col>
+                            <Col lg={5} md={5} xs={5}>{(item.status !== 'NSV')? (item.amount? item.amount : 'Inc') : '-'}</Col>
+                            <Col lg={2} md={2} xs={2} style={{textAlign: 'right'}}>{item.daysToRespond? item.daysToRespond : '-'}</Col>
+                        </Row>
+                    )
+                })
+            }
         </TemplatePro>
     )
 };
