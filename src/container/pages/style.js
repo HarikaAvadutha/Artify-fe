@@ -159,6 +159,23 @@ const UsercardWrapper = Styled.nav`
   }
 `;
 
+const ArtWorkStyleWrapper = Styled.nav`
+  table {
+  color: white;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  text-align: center;
+}
+`;
+
 const UserTableStyleWrapper = Styled.nav`
   table{
     tbody{
@@ -2037,6 +2054,34 @@ const TestimonialStyleWrapper = Styled.div`
   }
 `;
 
+export {
+  TestimonialWrapper,
+  PricingCard,
+  ListGroup,
+  Badge,
+  GalleryNav,
+  UserCard,
+  GalleryCard,
+  UsercardWrapper,
+  UserTableStyleWrapper,
+  ArtWorkStyleWrapper,
+  FaqCategoryBox,
+  FaqSupportBox,
+  FaqWrapper,
+  SearchResultWrapper,
+  ResultList,
+  MaintananceWrapper,
+  ErrorWrapper,
+  ComingsoonStyleWrapper,
+  AddUser,
+  ChangelogWrapper,
+  VersionHistoryList,
+  TestimonialStyleWrapper,
+  UserCarrdTop,
+  SupportTopWrap,
+  SupportContentWrap,
+};
+
 const UserCarrdTop = Styled.div`
   .ant-page-header-heading-extra{
     .btn-add_new{
@@ -2226,30 +2271,3 @@ const SupportContentWrap = Styled.div`
     }
   }
 `;
-
-export {
-  TestimonialWrapper,
-  PricingCard,
-  ListGroup,
-  Badge,
-  GalleryNav,
-  UserCard,
-  GalleryCard,
-  UsercardWrapper,
-  UserTableStyleWrapper,
-  FaqCategoryBox,
-  FaqSupportBox,
-  FaqWrapper,
-  SearchResultWrapper,
-  ResultList,
-  MaintananceWrapper,
-  ErrorWrapper,
-  ComingsoonStyleWrapper,
-  AddUser,
-  ChangelogWrapper,
-  VersionHistoryList,
-  TestimonialStyleWrapper,
-  UserCarrdTop,
-  SupportTopWrap,
-  SupportContentWrap,
-};

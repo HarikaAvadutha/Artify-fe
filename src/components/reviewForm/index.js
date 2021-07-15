@@ -2,9 +2,12 @@ import React, { useEffect } from 'react';
 import FontAwesome from 'react-fontawesome';
 import { ReviewStyle } from './style';
 import { Button } from '../buttons/buttons';
+import { get } from 'axios';
+import { BASE_API_URL } from '../../settings';
 
 export default function Review({ reviewActionTriggers, formData }) {
   const [activeIndex, setActiveIndex] = React.useState(0);
+  const [images, setImages] = React.useState([]);
   const [enableEditField, setEnableEditField] = React.useState({
     artistName: false,
     title: false,
@@ -12,15 +15,28 @@ export default function Review({ reviewActionTriggers, formData }) {
     media: false,
     support: false,
     dimensions: false,
+    purchase_price: false,
+    city: false,
+    state: false,
   });
   const [artformData, setArtformData] = React.useState(formData.artWorkInfo.values);
+  const [historyFormData, setHistoryFormData] = React.useState(formData.ownership.values);
+  // const SERVER_ENDPOINT = `${BASE_API_URL}/api/artimage/${formData.takePictures.artworkId}/`;
+  const SERVER_ENDPOINT = `${BASE_API_URL}/api/artimage?artworkId=${formData.takePictures.artworkId}`;
 
-  useEffect(() => {
-    // console.log(enableEditField);
-  });
+  const fetchImages = () => {
+    get(SERVER_ENDPOINT).then(res => {
+      if (res && res.hasOwnProperty('data')) {
+          setImages(res.data);
+      }
+    });
+  }
 
   const updateActiveIndex = index => {
     setActiveIndex(index);
+    if (index === 1) {
+      fetchImages();
+    }
   };
 
   const getDimensionData = () => {
@@ -64,6 +80,12 @@ export default function Review({ reviewActionTriggers, formData }) {
         data[1].value = e.target.value;
         setArtformData({ ...artformData, Dimensions: data });
         break;
+      case 'purchase_price':
+      case 'state':
+      case 'city':
+        formData.ownership[type] = e.target.value;
+        setHistoryFormData({ ...historyFormData, [type]: e.target.value });
+        break;
       default:
         break;
     }
@@ -74,6 +96,7 @@ export default function Review({ reviewActionTriggers, formData }) {
   };
 
   const onSubmitButtonClick = () => {
+    console.log('formData', formData)
     reviewActionTriggers('submit', formData);
   };
 
@@ -277,12 +300,84 @@ export default function Review({ reviewActionTriggers, formData }) {
         {activeIndex === 1 && (
           <div id="Images" className="tabcontent">
             <h1>Images</h1>
+            {images.map((image, idx) => (
+              <div style={{marginBottom: "10px"}} key={idx}>
+                <img style={{width: "200px", height: "200px"}} src={image.raw_image} />
+              </div>
+            ))}
+
           </div>
         )}
 
         {activeIndex === 2 && (
           <div id="History" className="tabcontent">
             <h1>History</h1>
+            <div className="field">
+              <FontAwesome
+                name="pencil"
+                size="2x"
+                className="edit-icon"
+                onClick={() => showEditField('purchase_price')}
+              />
+              <div style={{ width: '200px' }}>
+                <span className="field-label">Purchase Price</span>
+                {!enableEditField.purchase_price ? (
+                  <span className="field-value">{formData.ownership['purchase_price']}</span>
+                ) : (
+                  <input
+                    type="text"
+                    className="input-type"
+                    value={formData.ownership['purchase_price']}
+                    onChange={e => onChangeInput(e, 'purchase_price')}
+                    style={{ color: 'black' }}
+                  />
+                )}
+              </div>
+            </div>
+            <div className="field">
+              <FontAwesome
+                name="pencil"
+                size="2x"
+                className="edit-icon"
+                onClick={() => showEditField('city')}
+              />
+              <div style={{ width: '200px' }}>
+                <span className="field-label">City</span>
+                {!enableEditField.city ? (
+                  <span className="field-value">{formData.ownership['city']}</span>
+                ) : (
+                  <input
+                    type="text"
+                    className="input-type"
+                    value={formData.ownership['city']}
+                    onChange={e => onChangeInput(e, 'city')}
+                    style={{ color: 'black' }}
+                  />
+                )}
+              </div>
+            </div>
+            <div className="field">
+              <FontAwesome
+                name="pencil"
+                size="2x"
+                className="edit-icon"
+                onClick={() => showEditField('state')}
+              />
+              <div style={{ width: '200px' }}>
+                <span className="field-label">State</span>
+                {!enableEditField.state ? (
+                  <span className="field-value">{formData.ownership['state']}</span>
+                ) : (
+                  <input
+                    type="text"
+                    className="input-type"
+                    value={formData.ownership['state']}
+                    onChange={e => onChangeInput(e, 'state')}
+                    style={{ color: 'black' }}
+                  />
+                )}
+              </div>
+            </div>
           </div>
         )}
 

@@ -29,7 +29,7 @@ const Task = lazy(() => import('../../container/task/Index'));
 
 const Admin = () => {
   const { path } = useRouteMatch();
-
+  console.log('pathinadmin', path);
   return (
     <Switch>
       <Suspense

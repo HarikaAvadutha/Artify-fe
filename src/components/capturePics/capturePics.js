@@ -5,7 +5,7 @@ import { Button } from '../buttons/buttons';
 import { BASE_API_URL } from '../../settings';
 import FontAwesome from 'react-fontawesome';
 
-const collectionID = Math.floor(Math.random() * 1000000000);
+const artworkId = Math.floor(Math.random() * 1000000000);
 
 const SERVER_ENDPOINT = `${BASE_API_URL}/api/artimage/`;
 // eslint-disable-next-line no-unused-vars
@@ -18,9 +18,6 @@ const CapturePics = ({ loadNextSection, formData }) => {
   const [helpEnabled, toggleHelp] = useState(false);
   const imageInputRef = React.useRef();
 
-  // const artId = `art-${generateUUID()}`;
-  const artId = Math.floor(Math.random() * 1000000000);
-
   let mainImage;
 
   const stages = {
@@ -32,10 +29,13 @@ const CapturePics = ({ loadNextSection, formData }) => {
       title: 'Main Image',
       caption: 'Capture the entire work including the frame from directly in front',
     },
-    // mainImage2: {
-    //   title: 'Main Image (2)',
-    //   caption: 'Take 2 steps to the right. This may reduce glare. Capture the entire work including the frame.',
-    // },
+    mainImage2: {
+      title: 'Main Image (2)',
+      caption: 'Take 2 steps to the right. This may reduce glare. Capture the entire work including the frame.',
+      helpEnable: true,
+      hasLabel: true,
+      label: 'Not Signed',
+    },
     // mainImage3: {
     //   title: 'Main Image (3)',
     //   caption: 'Take 4 steps to the left. This may reduce glare. Capture the entire work including the frame.',
@@ -135,8 +135,8 @@ const CapturePics = ({ loadNextSection, formData }) => {
     }
     console.log('finalfile', finalFile.type)
     const payload = new FormData();
-    payload.append('userId',JSON.parse(localStorage.getItem('user')).id);
-    payload.append('artworkId', artId);
+    payload.append('userId', JSON.parse(localStorage.getItem('user')).id);
+    payload.append('artworkId', artworkId);
     payload.append('image_title', stages[currentStage].title);
     payload.append('image_type', finalFile.type.split('/')[1] === 'jpeg' ? 'jpg' : finalFile.type.split('/')[1]);
     payload.append('raw_image', finalFile);
@@ -158,7 +158,7 @@ const CapturePics = ({ loadNextSection, formData }) => {
     let nextObj;
     console.log('currentStage', currentStage);
     console.log('stages', stages);
-    if (currentStage !== 'info') {
+    if (currentStage !== 'info' && (imgSrc || selectedFile)) {
       console.log('formData', formData);
       fileUpload(imgSrc, type)
         .then(res => {
@@ -171,7 +171,7 @@ const CapturePics = ({ loadNextSection, formData }) => {
           if (!Object.values(nextObj).filter(Boolean).length) {
             loadNextSection({
               name: 'takePictures',
-              data: mainImage
+              data: { artworkId },
             });
           } else {
             setCurrentStage(nextObj.key);
@@ -191,8 +191,15 @@ const CapturePics = ({ loadNextSection, formData }) => {
     setSelectedType(null);
     let nextObj = navObj(stages, currentStage, 1);
     currentScreenCnt += 1;
-    setCurrentStage(nextObj.key);
-  }
+    if (!Object.values(nextObj).filter(Boolean).length) {
+      loadNextSection({
+        name: 'takePictures',
+        data: { artworkId },
+      });
+    } else {
+      setCurrentStage(nextObj.key);
+    }
+  };
 
   const handleBack = () => {
     const backObj = navObj(stages, currentStage, -1);
@@ -300,7 +307,7 @@ const CapturePics = ({ loadNextSection, formData }) => {
         </div>
         {selectedType === 'live' && (
           <div>
-            <WebcamCapture collectionID={collectionID} handleBack={handleBack} handleNext={handleNext} data={stages[currentStage]} skipClick={skipImage} />
+            <WebcamCapture artworkId={artworkId} handleBack={handleBack} handleNext={handleNext} data={stages[currentStage]} skipClick={skipImage} />
           </div>
         )}
         {selectedType === 'upload' && (

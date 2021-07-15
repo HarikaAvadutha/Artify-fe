@@ -45,11 +45,11 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
     >
 
       {JSON.parse(localStorage.getItem('user'))?.groups[0]?.name === "user" &&
-      <Menu.Item key="home" icon={!topMenu && <FeatherIcon icon="home" />} >
-        <NavLink onClick={toggleCollapsed} to={`${path}`}>
-          Art work
-        </NavLink>
-      </Menu.Item>}
+        <Menu.Item key="home" icon={!topMenu && <FeatherIcon icon="home" />} >
+          <NavLink onClick={toggleCollapsed} to={`${path}/users/artwork`}>
+            Art work
+          </NavLink>
+        </Menu.Item>}
 
       {JSON.parse(localStorage.getItem('user'))?.groups[0]?.name === "user" &&
         <Menu.Item key="dashboard" icon={!topMenu && <FeatherIcon icon="bar-chart-2" />} >
@@ -57,25 +57,25 @@ const MenuItems = ({ darkMode, toggleCollapsed, topMenu, events }) => {
             Capture Image
           </NavLink>
         </Menu.Item>}
-        {JSON.parse(localStorage.getItem('user'))?.groups[0]?.name === "expert" &&
+      {JSON.parse(localStorage.getItem('user'))?.groups[0]?.name === "expert" &&
         <Menu.Item key="dashboard" icon={!topMenu && <FeatherIcon icon="bar-chart-2" />} >
           <NavLink onClick={toggleCollapsed} to={`${path}`}>
             Dashboard
           </NavLink>
         </Menu.Item>}
-        {JSON.parse(localStorage.getItem('user'))?.groups[0]?.name === "expert" &&
+      {JSON.parse(localStorage.getItem('user'))?.groups[0]?.name === "expert" &&
         <Menu.Item key="dashboard" icon={!topMenu && <FeatherIcon icon="pushpin" />} >
           <NavLink onClick={toggleCollapsed} to={`${path}`}>
             Identification
           </NavLink>
         </Menu.Item>}
-        {JSON.parse(localStorage.getItem('user'))?.groups[0]?.name === "expert" &&
+      {JSON.parse(localStorage.getItem('user'))?.groups[0]?.name === "expert" &&
         <Menu.Item key="dashboard" icon={!topMenu && <FeatherIcon icon="book" />} >
           <NavLink onClick={toggleCollapsed} to={`${path}`}>
             Catalogue / Valuation
           </NavLink>
         </Menu.Item>}
-        {JSON.parse(localStorage.getItem('user'))?.groups[0]?.name === "expert" &&
+      {JSON.parse(localStorage.getItem('user'))?.groups[0]?.name === "expert" &&
         <Menu.Item key="dashboard" icon={!topMenu && <FeatherIcon icon="image" />} >
           <NavLink onClick={toggleCollapsed} to={`${path}`}>
             Build Buyer View
