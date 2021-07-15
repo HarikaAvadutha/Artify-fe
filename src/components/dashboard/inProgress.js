@@ -1,4 +1,5 @@
 import React from 'react';
+import { Row, Col } from 'antd';
 import { TemplateStyles as TemplatePro } from './style';
 
 export default function InProgress() {
@@ -119,6 +120,13 @@ export default function InProgress() {
             <div className="header">
                 <label>In Progress</label>
             </div>
+            <Row className="tableHeader">
+                <Col lg={5} md={5} xs={5}>Seller</Col>
+                <Col lg={6} md={6} xs={6}>Artist Name</Col>
+                <Col lg={6} md={6} xs={6} style={{textAlign: 'center'}}>Status</Col>
+                <Col lg={7} md={7} xs={7}>Days to Respond</Col>
+            </Row>
+            <div className="borderLine"></div>
         </TemplatePro>
     )
 };
