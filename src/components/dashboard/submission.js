@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'antd';
+import FontAwesome from 'react-fontawesome';
 import { TemplateStyles as TemplateSub } from './style';
 
 export default function Submission() {
@@ -98,8 +99,11 @@ export default function Submission() {
                             <Col lg={6} md={6} xs={6}>{item.name}</Col>
                             <Col lg={6} md={6} xs={6} className="textWrapEllipse">{item.submitted}</Col>
                             <Col lg={6} md={6} xs={6}>{item.artist}</Col>
-                            <Col lg={4} md={4} xs={4} style={{ textAlign: 'right' }}>{item.priority}</Col>
-                            <Col lg={2} md={2} xs={2}></Col>
+                            <Col lg={4} md={4} xs={4} style={{ textAlign: 'right' }} className={`${item.priority === 'High' ? 'colorGreen': ''} ${item.priority === 'Low' ? 'colorYellow': ''}`}>{item.priority}</Col>
+                            <Col lg={2} md={2} xs={2} justify="center">
+                                {item.priority === 'High' && <FontAwesome name="arrow-up" className="colorGreen" />}
+                                {item.priority === 'Low' && <FontAwesome name="arrow-down" className="colorYellow" />}
+                            </Col>
                         </Row>
                     )
                 })

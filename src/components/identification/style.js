@@ -33,7 +33,7 @@ const TemplateStyles = Styled.div`
 
     .tabCol {
         font-size: 12px;
-        padding: 5px 0px;
+        padding: 10px 0px;
     }
 
     .tabDataCol {

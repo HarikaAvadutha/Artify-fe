@@ -24,6 +24,15 @@ const TemplateStyles = Styled.div`
         overflow: hidden;
         text-overflow: ellipsis;
     }
+    .colorGreen {
+        color: #00FF87;
+        padding-left: 10px;
+    }
+
+    .colorYellow {
+        padding-left: 10px;
+        color: #FFB928;
+    }
 `;
 
 export { TemplateStyles };
