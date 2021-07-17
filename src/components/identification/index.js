@@ -56,7 +56,7 @@ export default function LeftTab() {
                     <div className="tabcontent">
                         <Row>
                             <Col lg={12} md={12} sx={12} className="tabCol">Artist</Col>
-                            <Col lg={12} md={12} sx={12} className="tabDataCol">{formData['artistName']}</Col>
+                            <Col lg={12} md={12} sx={12} className="tabCol tabDataCol">{formData['artistName']}</Col>
                         </Row>
                         <Row>
                             <Col lg={12} md={12} sx={12} className="tabCol">Title</Col>
@@ -177,7 +177,7 @@ export default function LeftTab() {
                                 <Col lg={2} md={2} sx={2}>
                                     {flagStage === 'artistName' && <FontAwesome name="flag" className="flagIcon" />}
                                 </Col>
-                                <Col lg={12} md={12} sx={12} className="tabDataCol">{formData['artistName']}</Col>
+                                <Col lg={12} md={12} sx={12} className="tabCol tabDataCol">{formData['artistName']}</Col>
                             </Row>
                             <Row className="alignItemsBase">
                                 <Col lg={10} md={10} sx={10} className="tabCol">Title
