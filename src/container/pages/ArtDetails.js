@@ -60,14 +60,14 @@ const ArtWork = () => {
   };
 
   const panel = {
-    padding: '0 !important',
-    border: 'none',
+    border: '1px solid #CCCCCC', padding: '10px 20px', borderRadius: '2px'
   };
 
   const inputText = {
     color: '#BAA06A',
     fontSize: '18px',
     fontWeight: '600',
+    display: 'block'
   };
 
   return (
@@ -85,7 +85,7 @@ const ArtWork = () => {
                 }}
               >
                 <Panel header="Description" key="1">
-                  <div style={{ border: '1px solid #CCCCCC', padding: '10px 20px', borderRadius: '2px' }}>
+                  <div style={panel}>
                     <div>
                       <div>{response.description.artName}</div>
                       <div>{response.description.year}</div>
@@ -108,7 +108,7 @@ const ArtWork = () => {
                   </div>
                 </Panel>
                 <Panel header="Condition Report" key="2">
-                  <div style={{ border: '1px #CCCCCC black', padding: '10px 20px' }}>
+                  <div style={panel}>
                     <div>
                       <div>{response.description.artName}</div>
                       <div>{response.description.year}</div>
@@ -150,11 +150,9 @@ const ArtWork = () => {
 
                 <div style={{ margin: '10px 0' }}>
                   <span style={inputText}>Auction Estimate</span>
-                  <br />
                   <input type="number" style={{ width: '125px', height: '35px' }} />
                   &nbsp;&nbsp;
                   <input type="number" style={{ width: '125px', height: '35px' }} />
-                  <br />
                   <span style={{ marginRight: '105px' }}>Low</span>
                   <span>High</span>
                 </div>
