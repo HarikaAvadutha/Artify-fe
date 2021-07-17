@@ -11,6 +11,7 @@ const ArtWork = lazy(() => import('../../container/pages/ArtWork'));
 const ArtWorkInfo = lazy(() => import('../../container/pages/ArtWorkInfo'));
 const Dashboard = lazy(() => import('../../container/pages/Dashboard'));
 const ArtDetails = lazy(() => import('../../container/pages/ArtDetails.js'));
+const Identification = lazy(() => import('../../container/pages/Identification'));
 
 
 const PagesRoute = () => {
@@ -24,6 +25,7 @@ const PagesRoute = () => {
       <Route path={`${path}/upload`} component={UserUpload} />
       <Route path={`${path}/artwork`} component={ArtWork} />
       <Route path={`${path}/dashboard`} component={Dashboard} />
+      <Route path={`${path}/identification`} component={Identification} />
       <Route path={`${path}/view/artwork/:artworkID`} component={ArtWorkInfo} />
       <Route path={`${path}/artDetails`} component={ArtDetails} />
       <Route path={`${path}`} component={Users} />
