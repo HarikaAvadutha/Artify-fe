@@ -11,7 +11,7 @@ export default function LeftTab() {
         workType: 'Painting',
         media: 'Oil',
         support: 'Linen',
-        dimensions: '14 x 15.75 in (35.5 x 40.5 cm)',
+        dimensions: '14x15.75 in (35.5x40.5 cm)',
         year: '1903'
     };
 
@@ -32,7 +32,7 @@ export default function LeftTab() {
     };
 
     const onCheckboxChange = (event, type) => {
-        console.log(type, event.checked);
+        console.log(type, event);
     }
 
     return (
@@ -93,7 +93,7 @@ export default function LeftTab() {
                         <Row className="alignItemsBase">
                             <Col lg={2} md={2} sx={2}>
                                 <div class="round">
-                                    <input type="checkbox" id="checkbox1" onChange={(event) => onCheckboxChange(event, 'Pigment/Technique')} />
+                                    <input type="checkbox" id="checkbox1" onChange={($e) => onCheckboxChange($e, 'Pigment/Technique')} />
                                     <label for="checkbox1"></label>
                                 </div>
                             </Col>
@@ -104,7 +104,7 @@ export default function LeftTab() {
                         <Row className="alignItemsBase">
                             <Col lg={2} md={2} sx={2}>
                                 <div class="round">
-                                    <input type="checkbox" id="checkbox2" onChange={(event) => onCheckboxChange(event, 'Support')} />
+                                    <input type="checkbox" id="checkbox2" onChange={($e) => onCheckboxChange($e, 'Support')} />
                                     <label for="checkbox2"></label>
                                 </div>
                             </Col>
@@ -115,7 +115,7 @@ export default function LeftTab() {
                         <Row className="alignItemsBase">
                             <Col lg={2} md={2} sx={2}>
                                 <div class="round">
-                                    <input type="checkbox" id="checkbox3" onChange={(event) => onCheckboxChange(event, 'Signature')} />
+                                    <input type="checkbox" id="checkbox3" onChange={($e) => onCheckboxChange($e, 'Signature')} />
                                     <label for="checkbox3"></label>
                                 </div>
                             </Col>
@@ -125,7 +125,7 @@ export default function LeftTab() {
                         <Row className="alignItemsBase">
                             <Col lg={2} md={2} sx={2}>
                                 <div class="round">
-                                    <input type="checkbox" id="checkbox4" onChange={(event) => onCheckboxChange(event, 'Condition')} />
+                                    <input type="checkbox" id="checkbox4" onChange={($e) => onCheckboxChange($e, 'Condition')} />
                                     <label for="checkbox4"></label>
                                 </div>
                             </Col>
@@ -135,7 +135,7 @@ export default function LeftTab() {
                         <Row className="alignItemsBase">
                             <Col lg={2} md={2} sx={2}>
                                 <div class="round">
-                                    <input type="checkbox" id="checkbox5" onChange={(event) => onCheckboxChange(event, 'Darkest')} />
+                                    <input type="checkbox" id="checkbox5" onChange={($e) => onCheckboxChange($e, 'Darkest')} />
                                     <label for="checkbox5"></label>
                                 </div>
                             </Col>
@@ -146,7 +146,7 @@ export default function LeftTab() {
                         <Row className="alignItemsBase">
                             <Col lg={2} md={2} sx={2}>
                                 <div class="round">
-                                    <input type="checkbox" id="checkbox6" onChange={(event) => onCheckboxChange(event, 'Lightest')} />
+                                    <input type="checkbox" id="checkbox6" onChange={($e) => onCheckboxChange($e, 'Lightest')} />
                                     <label for="checkbox6"></label>
                                 </div>
                             </Col>
@@ -157,7 +157,7 @@ export default function LeftTab() {
                         <Row className="alignItemsBase">
                             <Col lg={2} md={2} sx={2}>
                                 <div class="round">
-                                    <input type="checkbox" id="checkbox7" onChange={(event) => onCheckboxChange(event, 'Eyelid Detail')} />
+                                    <input type="checkbox" id="checkbox7" onChange={($e) => onCheckboxChange($e, 'Eyelid Detail')} />
                                     <label for="checkbox7"></label>
                                 </div>
                             </Col>
@@ -177,7 +177,9 @@ export default function LeftTab() {
                                 <Col lg={2} md={2} sx={2}>
                                     {flagStage === 'artistName' && <FontAwesome name="flag" className="flagIcon" />}
                                 </Col>
-                                <Col lg={12} md={12} sx={12} className="tabCol tabDataCol">{formData['artistName']}</Col>
+                                <Col lg={12} md={12} sx={12} className="tabCol tabDataCol">
+                                    {formData['artistName']}
+                                </Col>
                             </Row>
                             <Row className="alignItemsBase">
                                 <Col lg={10} md={10} sx={10} className="tabCol">Title
@@ -250,7 +252,7 @@ export default function LeftTab() {
                             <Row className="alignItemsBase">
                                 <Col lg={2} md={2} sx={2}>
                                     <div class="round">
-                                        <input type="checkbox" id="checkbox1" onChange={(event) => onCheckboxChange(event, 'Pigment/Technique')} />
+                                        <input type="checkbox" id="checkbox1" onChange={($e) => onCheckboxChange($e, 'Pigment/Technique')} />
                                         <label for="checkbox1"></label>
                                     </div>
                                 </Col>
@@ -261,7 +263,7 @@ export default function LeftTab() {
                             <Row className="alignItemsBase">
                                 <Col lg={2} md={2} sx={2}>
                                     <div class="round">
-                                        <input type="checkbox" id="checkbox2" onChange={(event) => onCheckboxChange(event, 'Support')} />
+                                        <input type="checkbox" id="checkbox2" onChange={($e) => onCheckboxChange($e, 'Support')} />
                                         <label for="checkbox2"></label>
                                     </div>
                                 </Col>
@@ -272,7 +274,7 @@ export default function LeftTab() {
                             <Row className="alignItemsBase">
                                 <Col lg={2} md={2} sx={2}>
                                     <div class="round">
-                                        <input type="checkbox" id="checkbox3" onChange={(event) => onCheckboxChange(event, 'Signature')} />
+                                        <input type="checkbox" id="checkbox3" onChange={($e) => onCheckboxChange($e, 'Signature')} />
                                         <label for="checkbox3"></label>
                                     </div>
                                 </Col>
@@ -282,7 +284,7 @@ export default function LeftTab() {
                             <Row className="alignItemsBase">
                                 <Col lg={2} md={2} sx={2}>
                                     <div class="round">
-                                        <input type="checkbox" id="checkbox4" onChange={(event) => onCheckboxChange(event, 'Condition')} />
+                                        <input type="checkbox" id="checkbox4" onChange={($e) => onCheckboxChange($e, 'Condition')} />
                                         <label for="checkbox4"></label>
                                     </div>
                                 </Col>
@@ -292,7 +294,7 @@ export default function LeftTab() {
                             <Row className="alignItemsBase">
                                 <Col lg={2} md={2} sx={2}>
                                     <div class="round">
-                                        <input type="checkbox" id="checkbox5" onChange={(event) => onCheckboxChange(event, 'Darkest')} />
+                                        <input type="checkbox" id="checkbox5" onChange={($e) => onCheckboxChange($e, 'Darkest')} />
                                         <label for="checkbox5"></label>
                                     </div>
                                 </Col>
@@ -303,7 +305,7 @@ export default function LeftTab() {
                             <Row className="alignItemsBase">
                                 <Col lg={2} md={2} sx={2}>
                                     <div class="round">
-                                        <input type="checkbox" id="checkbox6" onChange={(event) => onCheckboxChange(event, 'Lightest')} />
+                                        <input type="checkbox" id="checkbox6" onChange={($e) => onCheckboxChange($e, 'Lightest')} />
                                         <label for="checkbox6"></label>
                                     </div>
                                 </Col>

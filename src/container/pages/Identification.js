@@ -2,7 +2,6 @@ import React, { Suspense } from 'react';
 import { Row, Col, Skeleton } from 'antd';
 import { Main } from '../styled';
 import { Cards } from '../../components/cards/frame/cards-frame';
-import Submission from '../../components/dashboard/submission';
 import LeftTab from '../../components/identification';
 
 
@@ -15,6 +14,7 @@ export default function Identification() {
     fontColor: 'white',
     padding: '10px'
   }
+
   return (
     <Main>
       <Row justify="center">
@@ -27,7 +27,11 @@ export default function Identification() {
             }
           >
             <div style={card}>
-              <Submission />
+              <img
+                  style={{ width: '100%', height: '100%' }}
+                  alt="mainImage"
+                  src="https://foreignpolicy.com/wp-content/uploads/2014/10/450412342_multiple_pandas_getty_small.jpg"
+                />
             </div>
           </Suspense>
         </Col>

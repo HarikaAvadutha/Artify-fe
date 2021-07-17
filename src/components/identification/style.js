@@ -5,6 +5,7 @@ const TemplateStyles = Styled.div`
         background-color: #343941;
         border-radius: 15px;
         min-height: 300px;
+        margin-bottom: 20px;
     }
 
     .tab {
