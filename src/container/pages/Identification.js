@@ -3,7 +3,8 @@ import { Row, Col, Skeleton } from 'antd';
 import { Main } from '../styled';
 import { Cards } from '../../components/cards/frame/cards-frame';
 import Submission from '../../components/dashboard/submission';
-import InProgress from '../../components/dashboard/inProgress';
+import LeftTab from '../../components/identification';
+
 
 export default function Identification() {
 
@@ -11,7 +12,8 @@ export default function Identification() {
     backgroundColor: '#40434A',
     minHeight: '800px',
     borderRadius: '3px',
-    fontColor: 'white'
+    fontColor: 'white',
+    padding: '10px'
   }
   return (
     <Main>
@@ -38,7 +40,7 @@ export default function Identification() {
             }
           >
             <div style={card}>
-              <InProgress />
+              <LeftTab />
             </div>
           </Suspense>
         </Col>
