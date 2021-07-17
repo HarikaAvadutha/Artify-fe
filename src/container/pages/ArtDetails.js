@@ -75,7 +75,7 @@ const ArtWork = () => {
       <ArtWorkStyleWrapper style={{ backgroundColor: 'white' }}>
         <div>
           <Row justify="center" gutter={70}>
-            <Col lg={14} md={14} xs={14} >
+            <Col lg={14} md={14} xs={14}>
               <Collapse
                 defaultActiveKey={['1']}
                 style={{
