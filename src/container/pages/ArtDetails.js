@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 // import { get } from 'axios';
+import { Main } from '../styled';
 import { Row, Col } from 'antd';
 import { Collapse } from 'antd';
 import { ArtWorkStyleWrapper } from './style';
@@ -59,7 +60,7 @@ const ArtWork = () => {
   };
 
   const panel = {
-    color: 'red',
+    padding: '0 !important',
     border: 'none',
   };
 
@@ -70,31 +71,32 @@ const ArtWork = () => {
   };
 
   return (
-    <div>
+    <Main>
       <ArtWorkStyleWrapper style={{ backgroundColor: 'white' }}>
         <div>
-          <Row>
-            <Col lg={6} style={{ margin: '50px' }}>
+          <Row justify="center" gutter={70}>
+            <Col lg={14} md={14} xs={14} >
               <Collapse
                 defaultActiveKey={['1']}
                 style={{
                   border: 'none',
-                  width: '200%',
+                  padding: '20px',
+                  backgroundColor: 'white'
                 }}
               >
                 <Panel header="Description" key="1">
-                  <div style={{ border: '1px solid black', padding: '10px 20px' }}>
-                    <div style={{ margin: '10px 0' }}>
+                  <div style={{ border: '1px solid #CCCCCC', padding: '10px 20px', borderRadius: '2px' }}>
+                    <div>
                       <div>{response.description.artName}</div>
                       <div>{response.description.year}</div>
                       <div>{response.description.details}</div>
                     </div>
-                    <div style={{ margin: '10px 0' }}>
+                    <div>
                       <div>{response.description.signed}</div>
                       <div>{response.description.canvas}</div>
                       <div>{response.description.dimensions}</div>
                     </div>
-                    <div style={{ margin: '10px 0' }}>
+                    <div>
                       <div>{response.description.catalogue}</div>
                       <div>{response.description.artDescription}</div>
                     </div>
@@ -106,18 +108,18 @@ const ArtWork = () => {
                   </div>
                 </Panel>
                 <Panel header="Condition Report" key="2">
-                  <div style={{ border: '1px solid black', padding: '10px 20px' }}>
-                    <div style={{ margin: '10px 0' }}>
+                  <div style={{ border: '1px #CCCCCC black', padding: '10px 20px' }}>
+                    <div>
                       <div>{response.description.artName}</div>
                       <div>{response.description.year}</div>
                       <div>{response.description.details}</div>
                     </div>
-                    <div style={{ margin: '10px 0' }}>
+                    <div>
                       <div>{response.description.signed}</div>
                       <div>{response.description.canvas}</div>
                       <div>{response.description.dimensions}</div>
                     </div>
-                    <div style={{ margin: '10px 0' }}>
+                    <div>
                       <div>{response.description.catalogue}</div>
                       <div>{response.description.artDescription}</div>
                     </div>
@@ -133,7 +135,7 @@ const ArtWork = () => {
                 <Panel header="Catalogue Note" key="5" />
               </Collapse>
             </Col>
-            <Col lg={6} style={{ margin: 'auto' }}>
+            <Col lg={10} md={10} xs={10}>
               <div style={{ marginBottom: '10px' }}>
                 <img
                   style={{ width: '250px', height: '250px', margin: '10px 0' }}
@@ -169,7 +171,7 @@ const ArtWork = () => {
           </Row>
         </div>
       </ArtWorkStyleWrapper>
-    </div>
+    </Main>
   );
 };
 
