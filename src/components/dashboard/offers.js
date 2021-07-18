@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Row, Col } from 'antd';
+import { Row, Col, Select } from 'antd';
 import FontAwesome from 'react-fontawesome';
 import { TemplateStyles as TemplateOff } from './style';
 
@@ -54,23 +54,30 @@ const data = [
     }
 ];
 
+const { Option } = Select;
+
 export default function Offers() {
     const [selectedYear, setYear] = React.useState();
-    const [offers, setOffers] = React.useState(data);
+    const [offers, setOffers] = React.useState(data.filter(item => item.year === data[0].year));
 
     const years = [];
-    offers.forEach(item => {
+    data.forEach(item => {
         if (!years.includes(item.year)) years.push(item.year);
     });
-    // setYear(years[0], () => {
-    //     // setOffers(data.filter(item => item.year === selectedYear));
-    // });
-    
+
+    const onYearChange = ($event) => {
+        setYear($event);
+        setOffers(data.filter(item => item.year === $event));
+    };
 
     return (
         <TemplateOff>
             <div className="header">
                 <label>Offers</label>
+                <Select defaultValue={years[0]} style={{ minWidth:'100px', float: 'right', color: 'white' }}
+                    bordered={false} onChange={($event) => onYearChange($event)}>
+                    {years.map(year => <Option key={year} value={year}>{year}</Option>)}
+                </Select>
             </div>
             <Row className="tableHeader">
                 <Col lg={10} md={10} xs={10}>Seller</Col>
