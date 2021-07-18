@@ -3,6 +3,21 @@ import { Row, Col } from 'antd';
 import FontAwesome from 'react-fontawesome';
 import { TemplateStyles as TemplateSub } from './style';
 
+export const Month = {
+    1: 'January',
+    2: 'February',
+    3: 'March',
+    4: 'April',
+    5: 'May',
+    6: 'June',
+    7: 'July',
+    8: 'August',
+    9: 'September',
+    10: 'October',
+    11: 'November',
+    12: 'December'
+};
+
 export default function Submission() {
 
     const newSubmissions = [
@@ -93,9 +108,9 @@ export default function Submission() {
             </Row>
             <div className="borderLine"></div>
             {
-                newSubmissions.map(item => {
+                newSubmissions.map((item,index) => {
                     return (
-                        <Row className="tableItems">
+                        <Row className="tableItems" key={index}>
                             <Col lg={6} md={6} xs={6}>{item.name}</Col>
                             <Col lg={6} md={6} xs={6} className="textWrapEllipse">{item.submitted}</Col>
                             <Col lg={6} md={6} xs={6}>{item.artist}</Col>

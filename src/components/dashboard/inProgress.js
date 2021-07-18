@@ -2,6 +2,7 @@ import React from 'react';
 import { Row, Col } from 'antd';
 import FontAwesome from 'react-fontawesome';
 import { TemplateStyles as TemplatePro } from './style';
+import { Month } from './submission';
 
 export default function InProgress() {
 
@@ -129,9 +130,9 @@ export default function InProgress() {
             </Row>
             <div className="borderLine"></div>
             {
-                inProgress.map(item => {
+                inProgress.map((item,index) => {
                     return (
-                        <Row className="tableItems">
+                        <Row className="tableItems" key={index}>
                             <Col lg={5} md={5} xs={5}>{item.name}</Col>
                             <Col lg={5} md={5} xs={5}>{item.artist}</Col>
                             <Col lg={5} md={5} xs={5} style={{ textAlign: 'right' }} className={`${item.status === 'NSV' ? 'colorYellow' : ''} ${item.status === 'inProgress' ? 'colorGreen' : ''}`}>{item.status}</Col>
