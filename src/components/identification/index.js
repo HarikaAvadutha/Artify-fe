@@ -86,9 +86,9 @@ export default function LeftTab() {
                         <div className="sellerInfo">
 
                         </div>
-                        <Row className="alignItemsBase">
-                            <Col lg={20} md={20} sx={20} className="tabCol" style={{ margin: '10px 0' }}>Additional Information</Col>
-                            <Col lg={4} md={4} sx={4}><FontAwesome name="plus-circle" size="2x" className="edit-icon" /></Col>
+                        <Row className="alignItemsBase" style={{ margin: '10px 0' }}>
+                            <Col lg={22} md={22} sx={22} className="tabCol">Additional Information</Col>
+                            <Col lg={2} md={2} sx={2}><FontAwesome name="plus-circle" size="2x" className="edit-icon" /></Col>
                         </Row>
                         <Row className="alignItemsBase">
                             <Col lg={2} md={2} sx={2}>
@@ -270,9 +270,9 @@ export default function LeftTab() {
                         <div className="sellerInfo">
 
                         </div>
-                        <Row className="alignItemsBase">
-                            <Col lg={20} md={20} sx={20} className="tabCol" style={{ margin: '10px 0' }}>Additional Information</Col>
-                            <Col lg={4} md={4} sx={4}><FontAwesome name="plus-circle" size="1.5x" className="edit-icon" /></Col>
+                        <Row className="alignItemsBase" style={{ margin: '10px 0' }}>
+                            <Col lg={22} md={22} sx={22} className="tabCol">Additional Information</Col>
+                            <Col lg={2} md={2} sx={2}><FontAwesome name="plus-circle" size="2x" className="edit-icon" /></Col>
                         </Row>
                         <Row className="alignItemsBase">
                             <Col lg={2} md={2} sx={2}>

@@ -42,8 +42,7 @@ const TemplateStyles = Styled.div`
     }
 
     .edit-icon {
-        float: right;
-        padding: 5px;
+       padding: 5px;
         color: #BAA06A;
         margin: auto;
     }
