@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Row, Col, Select } from 'antd';
 import FontAwesome from 'react-fontawesome';
 import { TemplateStyles as TemplateOff } from './style';
