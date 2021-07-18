@@ -26,13 +26,11 @@ export default function Identification() {
               </Cards>
             }
           >
-            <div style={card}>
-              <img
-                  style={{ width: '100%', height: '100%' }}
-                  alt="mainImage"
-                  src="https://foreignpolicy.com/wp-content/uploads/2014/10/450412342_multiple_pandas_getty_small.jpg"
-                />
-            </div>
+            <img
+              style={{ width: '100%', height: '100%' }}
+              alt="mainImage"
+              src="https://foreignpolicy.com/wp-content/uploads/2014/10/450412342_multiple_pandas_getty_small.jpg"
+            />
           </Suspense>
         </Col>
         <Col lg={8} md={8} xs={8}>

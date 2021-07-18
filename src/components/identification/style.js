@@ -29,6 +29,7 @@ const TemplateStyles = Styled.div`
     .tabcontent {
         padding: 0 20px;
         color: white;
+        padding-bottom: 30px;
     }
 
     .tabCol {
