@@ -177,7 +177,9 @@ export default function LeftTab() {
                                 {flagStage === 'artistName' && <FontAwesome name="flag" className="flagIcon" />}
                             </Col>
                             <Col lg={12} md={12} sx={12} className="tabCol tabDataCol">
-                                {formData['artistName']}
+                                {(completedData['artistName'] || flagStage === 'artistName') &&
+                                    <input className="inputField" value={formData['artistName']} />
+                                }
                             </Col>
                         </Row>
                         <Row className="alignItemsBase">
@@ -188,7 +190,11 @@ export default function LeftTab() {
                             <Col lg={2} md={2} sx={2}>
                                 {flagStage === 'title' && <FontAwesome name="flag" className="flagIcon" />}
                             </Col>
-                            <Col lg={12} md={12} sx={12} className="tabCol tabDataCol">{formData['title']}</Col>
+                            <Col lg={12} md={12} sx={12} className="tabCol tabDataCol">
+                                {(completedData['title'] || flagStage === 'title') &&
+                                    <input className="inputField" value={formData['title']} />
+                                }
+                            </Col>
                         </Row>
                         <Row className="alignItemsBase">
                             <Col lg={10} md={10} sx={10} className="tabCol">Work Type
@@ -198,7 +204,11 @@ export default function LeftTab() {
                             <Col lg={2} md={2} sx={2}>
                                 {flagStage === 'workType' && <FontAwesome name="flag" className="flagIcon" />}
                             </Col>
-                            <Col lg={12} md={12} sx={12} className="tabCol tabDataCol">{formData['workType']}</Col>
+                            <Col lg={12} md={12} sx={12} className="tabCol tabDataCol">
+                                {(completedData['workType'] || flagStage === 'workType') &&
+                                    <input className="inputField" value={formData['workType']} />
+                                }
+                            </Col>
                         </Row>
                         <Row className="alignItemsBase">
                             <Col lg={10} md={10} sx={10} className="tabCol">Media
@@ -208,7 +218,11 @@ export default function LeftTab() {
                             <Col lg={2} md={2} sx={2}>
                                 {flagStage === 'media' && <FontAwesome name="flag" className="flagIcon" />}
                             </Col>
-                            <Col lg={12} md={12} sx={12} className="tabCol tabDataCol">{formData['media']}</Col>
+                            <Col lg={12} md={12} sx={12} className="tabCol tabDataCol">
+                                {(completedData['media'] || flagStage === 'media') &&
+                                    <input className="inputField" value={formData['media']} />
+                                }
+                            </Col>
                         </Row>
                         <Row className="alignItemsBase">
                             <Col lg={10} md={10} sx={10} className="tabCol">Support
@@ -218,7 +232,11 @@ export default function LeftTab() {
                             <Col lg={2} md={2} sx={2}>
                                 {flagStage === 'support' && <FontAwesome name="flag" className="flagIcon" />}
                             </Col>
-                            <Col lg={12} md={12} sx={12} className="tabCol tabDataCol">{formData['support']}</Col>
+                            <Col lg={12} md={12} sx={12} className="tabCol tabDataCol">
+                                {(completedData['support'] || flagStage === 'support') &&
+                                    <input className="inputField" value={formData['support']} />
+                                }
+                            </Col>
                         </Row>
                         <Row className="alignItemsBase">
                             <Col lg={10} md={10} sx={10} className="tabCol">Dimensions
@@ -228,7 +246,11 @@ export default function LeftTab() {
                             <Col lg={2} md={2} sx={2}>
                                 {flagStage === 'dimensions' && <FontAwesome name="flag" className="flagIcon" />}
                             </Col>
-                            <Col lg={12} md={12} sx={12} className="tabCol tabDataCol">{formData['dimensions']}</Col>
+                            <Col lg={12} md={12} sx={12} className="tabCol tabDataCol">
+                                {(completedData['dimensions'] || flagStage === 'dimensions') &&
+                                    <input className="inputField" value={formData['dimensions']} />
+                                }
+                            </Col>
                         </Row>
                         <Row className="alignItemsBase">
                             <Col lg={10} md={10} sx={10} className="tabCol">Year
@@ -238,7 +260,11 @@ export default function LeftTab() {
                             <Col lg={2} md={2} sx={2}>
                                 {flagStage === 'year' && <FontAwesome name="flag" className="flagIcon" />}
                             </Col>
-                            <Col lg={12} md={12} sx={12} className="tabCol tabDataCol">{formData['year']}</Col>
+                            <Col lg={12} md={12} sx={12} className="tabCol tabDataCol">
+                                {(completedData['year'] || flagStage === 'year') &&
+                                    <input className="inputField" value={formData['year']} />
+                                }
+                            </Col>
                         </Row>
                         <label className="tabCol">Seller Information:</label>
                         <div className="sellerInfo">

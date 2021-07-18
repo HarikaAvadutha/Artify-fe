@@ -56,6 +56,7 @@ const TemplateStyles = Styled.div`
 
     .flagIcon {
         color: #BAA06A;
+        margin: 5px;
     }
 
     .addIcon {
@@ -70,9 +71,9 @@ const TemplateStyles = Styled.div`
     // rounded checkbox
     .round {
         position: relative;
-      }
+    }
       
-      .round label {
+    .round label {
         background-color: #343941;
         border: 2px solid #00FF87;
         border-radius: 50%;
@@ -82,9 +83,9 @@ const TemplateStyles = Styled.div`
         position: absolute;
         top: 0;
         width: 20px;
-      }
+    }
       
-      .round label:after {
+    .round label:after {
         border-top: none;
         border-right: none;
         content: "";
@@ -95,29 +96,38 @@ const TemplateStyles = Styled.div`
         top: 8px;
         transform: rotate(-45deg);
         width: 12px;
-      }
-      
-      .round input[type="checkbox"] {
+    }
+    
+    .round input[type="checkbox"] {
         visibility: hidden;
-      }
-      
-      .round input[type="checkbox"]:checked + label {
+    }
+    
+    .round input[type="checkbox"]:checked + label {
         background-color: #BAA06A;
         border-color: #BAA06A;
-      }
-      
-      .round input[type="checkbox"]:checked + label:after {
+    }
+    
+    .round input[type="checkbox"]:checked + label:after {
         opacity: 1;
-      }
+    }
 
-      .sellerInfo {
-          background-color: #000000;
-          color: #9598A5;
-          height: 220px;
-          padding: 5px;
-          border-radius: 15px;
-          font-size: 12px;
-      }
+    .sellerInfo {
+        background-color: #000000;
+        color: #9598A5;
+        height: 220px;
+        padding: 5px;
+        border-radius: 15px;
+        font-size: 12px;
+    }
+
+    .inputField {
+        color: #9598A5;
+        border-radius: 15px;
+        background-color: #000000;
+        font-size: 12px;
+        padding-left: 5px;
+        border: none;
+    }
 `;
 
 export { TemplateStyles };
