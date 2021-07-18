@@ -57,7 +57,7 @@ const data = [
 const { Option } = Select;
 
 export default function Offers() {
-    const [selectedYear, setYear] = React.useState();
+    const [, setYear] = React.useState();
     const [offers, setOffers] = React.useState(data.filter(item => item.year === data[0].year));
 
     const years = [];
