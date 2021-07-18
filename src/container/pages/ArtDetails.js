@@ -153,8 +153,8 @@ const ArtWork = () => {
                   <input type="number" style={{ width: '125px', height: '35px' }} />
                   &nbsp;&nbsp;
                   <input type="number" style={{ width: '125px', height: '35px' }} />
-                  <span style={{ marginRight: '105px' }}>Low</span>
-                  <span>High</span>
+                  <div><span style={{ marginRight: '105px' }}>Low</span>
+                  <span>High</span></div>
                 </div>
 
                 <button style={rightButtons} type="button">
